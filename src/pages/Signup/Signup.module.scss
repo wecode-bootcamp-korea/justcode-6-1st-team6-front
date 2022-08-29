@@ -1,2 +1,55 @@
+.background {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d5b7f4;
+}
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin: auto;
+  height: 100%;
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+}
+.textInput {
+  width: 300px;
+  height: 25px;
+  margin-bottom: 10px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom: 3px solid #d5b7f4;
+}
+
+.ask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.click {
+  color: #9a4aeb;
+  cursor: pointer;
+}
+.signupButton {
+  width: 310px;
+  height: 35px;
+  background-color: #d5b7f4;
+  border: none;
+  border-radius: 5px;
+}
+.button {
+  cursor: not-allowed;
 }
