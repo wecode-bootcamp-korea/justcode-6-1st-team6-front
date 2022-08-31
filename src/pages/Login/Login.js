@@ -6,54 +6,57 @@ import css from './Login.module.scss';
 function Login() {
   const navigate = useNavigate();
   const goToSignup = () => {
-    navigate('/signup');
+    navigate('/agreement');
   };
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [valid, setValid] = useState(false);
 
-  const handleIdInput = e => {
-    const idValue = e.target.value;
-    setId(idValue);
-    idValue.includes('@') && pw.length >= 6 ? setValid(true) : setValid(false);
+  const handleEmailInput = e => {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+    emailValue.includes('@') && pw.length >= 6
+      ? setValid(true)
+      : setValid(false);
   };
   const handlePwInput = e => {
     const pwValue = e.target.value;
     setPw(pwValue);
-    id.includes('@') && pwValue.length >= 6 ? setValid(true) : setValid(false);
+    email.includes('@') && pwValue.length >= 6
+      ? setValid(true)
+      : setValid(false);
   };
 
   return (
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <h1 className={css.flexCenter}>로고</h1>
-          <h2 className={css.flexCenter}>Login</h2>
+          <img className={css.textLogo} src="logo2.png" />
+          <h1 className={css.flexCenter}></h1>
+          <h2>로그인</h2>
           <div>
             <input
               className={css.emailInput}
-              placeholder="Email address"
-              onChange={handleIdInput}
+              placeholder="아이디 (이메일 주소)"
+              onChange={handleEmailInput}
             ></input>
           </div>
           <div>
             <input
+              type="password"
               onChange={handlePwInput}
               className={css.passwordInput}
-              placeholder="Password"
+              placeholder="비밀번호"
             ></input>
           </div>
-          <div className={css.ask}>
-            <span className={css.click} onClick={goToSignup}>
-              회원가입
-            </span>
-            &nbsp; 하시겠습니까?
-          </div>
           <button
-            style={{ backgroundColor: valid ? '#9a4aeb' : '#d5b7f4' }}
+            style={{ backgroundColor: valid ? '#d5b7f4' : 'black' }}
             className={`${css.loginButton} ${css.button}`}
           >
-            로그인하기
+            로그인
+          </button>
+          <button className={css.ask} onClick={goToSignup}>
+            이메일로 신규 회원가입
           </button>
         </div>
       </div>
