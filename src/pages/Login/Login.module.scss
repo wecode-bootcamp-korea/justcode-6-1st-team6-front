@@ -29,23 +29,11 @@
   background-color: white;
 }
 
-//특이사항 없으면 아이디랑 패스워드 css 합쳐야지
-.emailInput {
-  width: 300px;
-  height: 25px;
-  margin-top: 50px;
-  margin-bottom: 20px;
-  border-left-width: 0;
-  border-right-width: 0;
-  border-top-width: 0;
-  border-bottom: 2px solid black;
-}
-
-.passwordInput {
+.textInput {
   width: 300px;
   height: 25px;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   border-left-width: 0;
   border-right-width: 0;
   border-top-width: 0;
@@ -57,11 +45,9 @@
   height: 35px;
   color: white;
   background-color: black;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   border: none;
-}
-.button {
-  cursor: not-allowed;
 }
 
 .ask {

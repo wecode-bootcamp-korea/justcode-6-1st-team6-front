@@ -4,10 +4,28 @@ import { useState } from 'react';
 import css from './Agreement.module.scss';
 
 function Agreement() {
+  const navigate = useNavigate();
+
   const [allCheck, setAllCheck] = useState(false);
   const [ageCheck, setAgeCheck] = useState(false);
   const [serviceCheck, setServiceCheck] = useState(false);
   const [personalCheck, SetPersonalCheck] = useState(false);
+
+  const [agreementError, setAgreementError] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+
+  // 다음단계 버튼 눌렀을 때 전체 선택되어있지 않으면 에러메세지 흐음..... 여기에 버튼 눌러서 담에 가는건 어카지
+
+  const onCheckClick = e => {
+    e.preventDefault();
+    if (!allCheck) {
+      setAgreementError(true);
+    } else {
+      setAgreementError(false);
+      setDisabled(false);
+      navigate('/signup');
+    }
+  };
 
   //이용약관 버튼 구현 (전체버튼 누르면 전체 눌림)
   //전체동의 체크시 나머지 3개 전부 체크, 전체동의 해제시 나머지 3개 전부 해제,
@@ -79,34 +97,43 @@ function Agreement() {
               />{' '}
               네, 모두 동의합니다.
             </div>
-            <div className={css.forteen}>
+            <div className={css.agreeList}>
               <input
                 type="checkbox"
                 checked={ageCheck}
                 onChange={ageBtnCheck}
-              />{' '}
-              필수, 만 14세 이상
+              />
+              &nbsp;만 14세 이상
+              <span className={css.must}>&nbsp;(필수)</span>
             </div>
-            <div className={css.service}>
+            <div className={css.agreeList}>
               <input
                 type="checkbox"
                 checked={serviceCheck}
                 onChange={serviceBtnCheck}
-              />{' '}
-              필수, 서비스 이용약관에 동의
+              />
+              &nbsp;서비스 이용약관에 동의
+              <span className={css.must}>&nbsp;(필수)</span>
             </div>
-            <div className={css.personal}>
+            <div className={css.agreeList}>
               <input
                 type="checkbox"
                 checked={personalCheck}
                 onChange={personalBtnCheck}
-              />{' '}
-              필수, 개인정보 수집, 이용에 동의
+              />
+              &nbsp;개인정보 수집, 이용에 동의
+              <span className={css.must}>&nbsp;(필수)</span>
             </div>
           </div>
-
+          {agreementError && (
+            <div style={{ color: 'red', textAlign: 'center' }}>
+              이용약관에 동의해 주시기 바랍니다.
+            </div>
+          )}
           <button
-            // style={{ backgroundColor: valid ? '#d5b7f4' : 'black' }}
+            disabled={disabled}
+            onClick={onCheckClick}
+            style={{ backgroundColor: allCheck ? '#d5b7f4' : 'black' }}
             className={`${css.signupButton} ${css.button}`}
           >
             다음단계 진행

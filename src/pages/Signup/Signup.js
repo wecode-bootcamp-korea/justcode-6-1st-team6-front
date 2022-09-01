@@ -63,7 +63,9 @@ function Signup() {
               placeholder="Email 주소 입력 (@ 포함)"
             ></input>
             {emailError && (
-              <div style={{ color: 'red' }}>이메일 양식을 확인하세요</div>
+              <div style={{ color: 'red', textAlign: 'center' }}>
+                이메일 양식을 확인하세요
+              </div>
             )}
           </div>
           <div>
@@ -82,15 +84,11 @@ function Signup() {
               placeholder="비밀번호 확인"
             ></input>
             {mismatchError && (
-              <div style={{ color: 'red' }}>비밀번호가 일치하지 않습니다.</div>
+              <div style={{ color: 'red', textAlign: 'center' }}>
+                비밀번호가 일치하지 않습니다.
+              </div>
             )}
           </div>
-          <div className={css.checkBox}>
-            <input type="checkbox" />
-            &nbsp;
-            <span className={css.click}>이용약관</span>에 동의하겠습니까?
-          </div>
-
           <div className={css.ask}>
             <span>이미 계정이 있다면? </span> &nbsp;
             <span className={css.click} onClick={goToLogin}>

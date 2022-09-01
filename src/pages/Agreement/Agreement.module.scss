@@ -30,6 +30,8 @@
 }
 .agreementBox {
   border: 1px solid rgb(193, 191, 191);
+  margin-top: 30px;
+  margin-bottom: 20px;
   padding: 10px;
 }
 .allCheck {
@@ -44,6 +46,14 @@
   border: none;
   margin-top: 30px;
 }
+.must {
+  color: #d5b7f4;
+  font-size: 15px;
+}
+.agreeList {
+  margin: 20px;
+}
 .padding_10 {
-  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
