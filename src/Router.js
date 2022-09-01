@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Edit from './pages/Edit/Edit';
 import MyList from './pages/MyList/MyList';
+import Agreement from './pages/Agreement/Agreement';
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
         <Route path="/newpost" element={<NewPost />} />
         <Route path="/edit" element={<Edit />} />
         <Route path="/mylist" element={<MyList />} />
+        <Route path="/agreement" element={<Agreement />} />
       </Routes>
       <Footer />
     </BrowserRouter>

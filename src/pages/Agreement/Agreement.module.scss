@@ -12,7 +12,7 @@
 .textLogo {
   display: block;
   margin: auto;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
   width: auto;
   height: auto;
   max-width: 200px;
@@ -29,40 +29,32 @@
   width: 50%;
   background-color: white;
 }
-
-.textInput {
-  width: 300px;
-  height: 25px;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border-left-width: 0;
-  border-right-width: 0;
-  border-top-width: 0;
-  border-bottom: 2px solid black;
-  outline: none;
-}
-
-// .checkBox {
-//   margin-top: 20px;
-// }
-.ask {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.agreementBox {
+  border: 1px solid rgb(193, 191, 191);
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  padding: 10px;
 }
-.click {
-  color: #9a4aeb;
-  cursor: pointer;
+.allCheck {
+  border-bottom: 1px solid rgb(193, 191, 191);
 }
+
 .signupButton {
   width: 310px;
   height: 35px;
   color: white;
   background-color: black;
   border: none;
+  margin-top: 30px;
 }
-.button {
-  cursor: not-allowed;
+.must {
+  color: #d5b7f4;
+  font-size: 15px;
+}
+.agreeList {
+  margin: 20px;
+}
+.padding_10 {
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
