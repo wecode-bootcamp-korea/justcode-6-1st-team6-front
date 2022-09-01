@@ -1,2 +1,114 @@
-.container {
+// .container {
+//   width: 100%;
+// }
+header {
+  position: fixed;
+  width: 100%;
+}
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 85px;
+  padding: 0 50px;
+  font-size: 20px;
+  background: #fff;
+  box-shadow: 1px 1px 8px #ddd;
+  .logoArea {
+    img {
+      width: auto;
+      height: 43px;
+      vertical-align: bottom;
+    }
+  }
+  .headerContentArea {
+    display: flex;
+    align-items: center;
+    .newPost {
+      margin-right: 30px;
+
+      cursor: pointer;
+    }
+    .alertBell {
+      display: block;
+      margin-right: 30px;
+      width: 24px;
+      height: 24px;
+      background-image: url('../../images/bell.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+    }
+    .myProfile {
+      cursor: pointer;
+      span {
+        display: block;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: url('../../images/user_icon16.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        // &::after {
+        //   content: '';
+        //   width: 0px;
+        //   height: 0px;
+
+        //   padding-top: 10px;
+        //   border-top: 20px solid #666666;
+        //   border-left: 10px solid transparent;
+        //   border-right: 10px solid transparent;
+        // }
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+}
+.dropAlert {
+  position: absolute;
+  top: 85px;
+  right: 130px;
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 3px #ddd;
+  .title {
+    padding: 10px;
+    border-bottom: 1px solid#ddd;
+    font-size: 16px;
+    span {
+      position: absolute;
+      right: 10px;
+      color: #666;
+      cursor: pointer;
+    }
+  }
+}
+.dropNav {
+  position: absolute;
+  top: 85px;
+  right: 40px;
+  width: 170px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 3px #ddd;
+  li {
+    font-size: 16px;
+    list-style: none;
+
+    a {
+      padding: 20px;
+      display: block;
+    }
+  }
+}
+.hideNav {
+  display: none;
+}
+
+.dFlex {
+  display: flex;
+  align-items: center;
 }
