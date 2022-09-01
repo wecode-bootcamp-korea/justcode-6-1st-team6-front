@@ -38,6 +38,7 @@
   border-right-width: 0;
   border-top-width: 0;
   border-bottom: 2px solid black;
+  outline: none;
 }
 
 .loginButton {
@@ -63,4 +64,7 @@
 .click {
   color: #9a4aeb;
   cursor: pointer;
+}
+.ask {
+  color: rgb(201, 204, 206);
 }

@@ -133,7 +133,9 @@ function Agreement() {
           <button
             disabled={disabled}
             onClick={onCheckClick}
-            style={{ backgroundColor: allCheck ? '#d5b7f4' : 'black' }}
+            style={{
+              backgroundColor: allCheck ? 'black' : 'rgb(201, 204, 206)',
+            }}
             className={`${css.signupButton} ${css.button}`}
           >
             다음단계 진행

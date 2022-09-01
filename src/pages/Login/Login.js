@@ -98,7 +98,7 @@ function Login() {
           )}
           <button
             onClick={goToMain}
-            style={{ backgroundColor: valid ? '#d5b7f4' : 'black' }}
+            style={{ backgroundColor: valid ? 'black' : 'rgb(201, 204, 206)' }}
             className={`${css.loginButton} ${css.button}`}
           >
             로그인
