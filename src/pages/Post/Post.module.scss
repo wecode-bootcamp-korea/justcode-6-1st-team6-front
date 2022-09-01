@@ -1,0 +1,123 @@
+.container {
+  box-sizing: border-box;
+  padding-top: 150px;
+
+  .post {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+
+    .postHeader {
+      button {
+        border: none;
+        background-color: transparent;
+
+        margin-top: 3rem;
+      }
+
+      .postBack {
+        margin-bottom: 44px;
+      }
+
+      .postTitle {
+        h1 {
+          font-weight: 700;
+          font-size: 53px;
+        }
+      }
+
+      .postUser {
+        display: flex;
+        align-items: center;
+
+        margin-top: 35px;
+        padding-bottom: 32px;
+        border-bottom: 3px solid #f2f2f2;
+
+        font-size: 18px;
+
+        .user {
+          padding-right: 20px;
+          margin: 0 20px;
+          border-right: 2px solid #e1e1e1;
+
+          font-weight: 700;
+        }
+
+        .date {
+          font-weight: 500;
+          color: #717171;
+        }
+      }
+
+      .info {
+        display: flex;
+        justify-content: flex-start;
+
+        margin-top: 60px;
+
+        font-size: 22px;
+        font-weight: 700;
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+
+          list-style: none;
+          padding-left: 0px;
+
+          li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex: 1 1 40%;
+
+            margin-bottom: 25px;
+
+            .infoTitle {
+              margin-right: 40px;
+
+              font-size: 20px;
+              font-weight: 700;
+              color: #717171;
+            }
+
+            img {
+              margin-right: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      margin-top: 132px;
+
+      .contentInfo {
+        .contentTitle {
+          border-bottom: 3px solid #f2f2f2;
+
+          h2 {
+            margin-bottom: 30px;
+
+            font-size: 26px;
+            font-weight: 700;
+          }
+        }
+
+        .contentIntro {
+          padding-top: 25px;
+          font-size: 20px;
+
+          p {
+            margin: 25px 0;
+          }
+        }
+      }
+    }
+  }
+}
