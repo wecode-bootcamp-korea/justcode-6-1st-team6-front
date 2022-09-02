@@ -49,9 +49,9 @@ function Signup() {
 
   const onSignupBtnClick = () => {
     const body = {
-      nickName: nickName,
-      password: password,
       email: email,
+      nickname: nickName,
+      password: password,
     };
     fetch('http://localhost:3000/signup', {
       method: 'POST',
@@ -72,12 +72,8 @@ function Signup() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img
-            className={css.textLogo}
-            alt="로고"
-            src="../../../images/logo2.png"
-          />
-          <h2>회원가입</h2>
+          <img className={css.textLogo} alt="로고" src="./images/logo2.png" />
+          <h1>회원가입</h1>
           <div>
             <input
               onChange={onChangeNick}

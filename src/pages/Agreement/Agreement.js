@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './Agreement.module.scss';
 
@@ -86,8 +86,8 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} src="../../../images/logo2.png" />
-          <h3>서비스 이용약관에 동의</h3>
+          <img className={css.textLogo} src="./images/logo2.png" />
+          <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
             <div className={`${css.allCheck} ${css.padding_10}`}>
               <input
