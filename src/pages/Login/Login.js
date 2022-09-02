@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './Login.module.scss';
+import logo from '../../assets/images/logo2.png';
 
 function Login() {
   const goToSignup = () => {
@@ -64,7 +65,7 @@ function Login() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} alt="로고" src="./images/logo2.png" />
+          <img className={css.textLogo} alt="로고" src={logo} />
           <h1>로그인</h1>
           <div>
             <input

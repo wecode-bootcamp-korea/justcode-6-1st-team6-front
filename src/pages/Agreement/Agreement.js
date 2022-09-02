@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './Agreement.module.scss';
+import logo from '../../assets/images/logo2.png';
 
 function Agreement() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} src="./images/logo2.png" />
+          <img className={css.textLogo} src={logo} />
           <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
             <div className={`${css.allCheck} ${css.padding_10}`}>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useCallback } from 'react';
 import css from './Signup.module.scss';
+import logo from '../../assets/images/logo2.png';
 
 function Signup() {
   //닉네임, 이메일,비밀번호, 비밀번호 확인 현재값
@@ -72,7 +73,7 @@ function Signup() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} alt="로고" src="./images/logo2.png" />
+          <img className={css.textLogo} alt="로고" src={logo} />
           <h1>회원가입</h1>
           <div>
             <input
