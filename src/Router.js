@@ -25,7 +25,7 @@ function Router() {
         <Route path="/edit" element={<Edit />} />
         <Route path="/mylist" element={<MyList />} />
         <Route path="/agreement" element={<Agreement />} />
-        <Route path="/post" element={<Post />} />
+        <Route path="/post/:postId" element={<Post />} />
       </Routes>
       <Footer />
     </BrowserRouter>

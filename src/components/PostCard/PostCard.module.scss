@@ -1,0 +1,93 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.postCardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 26px 26px 34px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 2px solid #d1d1d1;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+
+  .contents {
+    .startDate {
+      font-size: 18px;
+      color: #999999;
+    }
+
+    .title {
+      margin: 15px 0;
+      height: 76px;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 36px;
+      color: #000000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .hashTag {
+      display: flex;
+      margin-bottom: 45px;
+      min-height: 30px;
+      gap: 5px;
+      font-size: 18px;
+      color: #999999;
+    }
+
+    .skills {
+      display: flex;
+      margin-bottom: 50px;
+      height: 48px;
+      gap: 12px;
+    }
+
+    .etc {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 2px solid #f2f2f2;
+
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        .img {
+          width: 20px;
+          height: 20px;
+        }
+
+        .span {
+          color: #999;
+        }
+      }
+    }
+  }
+}
+
+.postCardContainer:hover {
+  transform: scale(1.04);
+}
+
+@media screen and (min-width: 768px) {
+  .postCardContainer {
+    width: 370px;
+    height: 450px;
+  }
+}

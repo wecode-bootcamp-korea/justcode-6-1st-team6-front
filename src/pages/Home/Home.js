@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Banner from '../../components/Banner/Banner';
 import BannerContainer from '../../components/Banner/BannerContainer';
-import UserSummary from '../../components/UserSummary/UserSummary';
+import PostCard from '../../components/PostCard/PostCard';
 
 import styles from './Home.module.scss';
 
 function Home() {
+  const [postCard, setPostCard] = useState({});
+
+  useEffect(() => {
+    fetch('/mock/main/postCard.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(json => setPostCard(json));
+  }, [postCard]);
+
   return (
     <div className={styles.container}>
       <BannerContainer>
         <Banner />
       </BannerContainer>
-      <UserSummary
-        nickname="hello"
-        profileImage="https://hola-post-image.s3.ap-northeast-2.amazonaws.com/default.PNG"
-      />
+      <PostCard data={postCard} />
     </div>
   );
 }
