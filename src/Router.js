@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Reset } from 'styled-reset';
 import Home from './pages/Home/Home';
 import NewPost from './pages/NewPost/NewPost';
 import Login from './pages/Login/Login';
@@ -14,6 +15,7 @@ import Post from './pages/Post/Post';
 function Router() {
   return (
     <BrowserRouter>
+      <Reset />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
