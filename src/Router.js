@@ -15,7 +15,7 @@ import Post from './pages/Post/Post';
 function Router() {
   return (
     <BrowserRouter>
-      <Reset />
+      {/* <Reset /> */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

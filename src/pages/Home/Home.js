@@ -1,12 +1,15 @@
 import React from 'react';
+import Banner from '../../components/Banner/Banner';
+import BannerContainer from '../../components/Banner/BannerContainer';
 
-import HomeContent from '../../components/HomeContent/HomeContent';
-import css from './Home.module.scss';
+import styles from './Home.module.scss';
 
 function Home() {
   return (
-    <div className={css.container}>
-      <HomeContent />
+    <div className={styles.container}>
+      <BannerContainer>
+        <Banner />
+      </BannerContainer>
     </div>
   );
 }
