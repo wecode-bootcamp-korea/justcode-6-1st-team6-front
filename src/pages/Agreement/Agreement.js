@@ -86,7 +86,7 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} src="logo2.png" />
+          <img className={css.textLogo} src="../../../images/logo2.png" />
           <h3>서비스 이용약관에 동의</h3>
           <div className={css.agreementBox}>
             <div className={`${css.allCheck} ${css.padding_10}`}>
