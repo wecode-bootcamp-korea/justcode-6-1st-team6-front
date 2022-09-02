@@ -1,0 +1,102 @@
+.newComment {
+  padding: 30px 0;
+  border-bottom: 3px solid lightgray;
+  margin-bottom: 30px;
+
+  .commentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+
+    .commentInfoWrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      .commentProfile {
+        display: block;
+
+        width: 52px;
+        height: 52px;
+        margin-right: 16px;
+      }
+
+      .commentInfo {
+        display: flex;
+        flex-direction: column;
+
+        .commentUser {
+          font-size: 16px;
+          font-weight: 700;
+        }
+
+        .commentDate {
+          font-size: 14px;
+          color: #9f9f9f;
+        }
+      }
+    }
+
+    .commentChangeBtn {
+      button {
+        padding: 1px 6px;
+
+        border: none;
+        background-color: transparent;
+
+        font-size: 16px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .commentContent {
+    padding: 18px 0;
+    font-size: 18px;
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 350px;
+  height: 250px;
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .cancelButton {
+    margin-right: 16px;
+  }
+
+  .deleteButton {
+    background-color: black;
+    color: white;
+  }
+
+  button {
+    height: 30px;
+    padding: 0 16px;
+
+    border: none;
+    outline: none;
+    border-radius: 4px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
