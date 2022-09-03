@@ -35,7 +35,7 @@ function Header() {
         <div className={css.headerContainer}>
           <div className={css.logoArea}>
             <Link to="./">
-              <img alt="logo" src="../../../images/logo2.png" />
+              <img alt="logo" src={require('../../assets/images/logo2.png')} />
             </Link>
           </div>
           <div className={css.headerContentArea}>
