@@ -1,6 +1,8 @@
+import React from 'react';
 import styles from './Modal.module.scss';
+import ModalDeleteComment from './ModalDeleteComment';
 
-function Modal(props) {
+function Modal({ id, modal, setModal, deleteComment }) {
   return (
     <div>
       <div
@@ -15,27 +17,12 @@ function Modal(props) {
       />
       <div className={styles.modal}>
         <div className={styles.modalWrap}>
-          <div className={styles.modalDeleteComment}>
-            <p>댓글을 삭제 하시겠어요?</p>
-            <div className={styles.modalButton}>
-              <button
-                className={styles.cancelButton}
-                onClick={() => {
-                  props.setModal(!props.modal);
-                }}
-              >
-                아니요
-              </button>
-              <button
-                className={styles.deleteButton}
-                onClick={() => {
-                  props.deleteComment(props.id);
-                }}
-              >
-                네, 삭제할래요
-              </button>
-            </div>
-          </div>
+          <ModalDeleteComment
+            id={id}
+            modal={modal}
+            setModal={setModal}
+            deleteComment={deleteComment}
+          />
         </div>
       </div>
     </div>

@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
 import Modal from './Modal';
+import commentStyles from './Comment.module.scss';
 
-function NewComment({ id, profile, user, created_at, comment, deleteComment }) {
+function NewComment({
+  id,
+  profile,
+  user,
+  created_at,
+  comment,
+  deleteComment,
+  modifyComment,
+}) {
   const [modal, setModal] = useState(false);
+  const [isModify, setModify] = useState(false);
+  const [text, setText] = useState('');
 
   return (
     <>
@@ -19,7 +30,25 @@ function NewComment({ id, profile, user, created_at, comment, deleteComment }) {
             </div>
           </div>
           <div className={styles.commentChangeBtn}>
-            <button className={styles.commentModify}>수정</button>
+            <button
+              className={styles.commentModify}
+              onClick={() => {
+                if (isModify) {
+                  console.log('a');
+                  setModify(false);
+                  setText('');
+                  modifyComment(id, { comment: text });
+                  console.log('b');
+                  return;
+                }
+                console.log('c');
+                setText(comment);
+                setModify(true);
+                console.log('d');
+              }}
+            >
+              {isModify ? '저장' : '수정'}
+            </button>
             <button
               className={styles.commentDelete}
               onClick={() => {
@@ -30,9 +59,21 @@ function NewComment({ id, profile, user, created_at, comment, deleteComment }) {
             </button>
           </div>
         </div>
-        <div className={styles.commentContent}>{comment}</div>
+        {isModify ? (
+          <textarea
+            type="text"
+            value={text}
+            className={commentStyles.commentInput}
+            placeholder="댓글을 입력하세요."
+            onChange={event => {
+              setText(event.target.value);
+            }}
+          />
+        ) : (
+          <div className={styles.commentContent}>{comment}</div>
+        )}
       </div>
-      {modal == true ? (
+      {modal === true ? (
         <Modal
           id={id}
           modal={modal}

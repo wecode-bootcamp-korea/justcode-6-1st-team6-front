@@ -15,23 +15,43 @@ function Comment() {
       profile: '/images/user.png',
       user: 'Kevin Ahn',
       created_at: '2023-05-28 11:27:33',
-      comment: comment,
+      comment,
     };
     setCommentArray([...commentArray, newComment]);
     setComment('');
   };
 
-  const deleteComment = commentId => {
-    setCommentArray(commentArray.filter(comment => comment.id !== commentId));
+  const deleteComment = id => {
+    setCommentArray(commentArray.filter(item => item.comment_id !== id));
+  };
+
+  const modifyComment = (id, body) => {
+    const originComment = commentArray.find(item => item.comment_id === id);
+    if (!originComment) return;
+
+    const updateComment = {
+      ...originComment,
+      comment: body.comment,
+    };
+
+    //서버 연결 시에 제거
+    const updateCommentList = commentArray.map(item => {
+      if (item.comment_id === id) {
+        return updateComment;
+      }
+      return item;
+    });
+
+    setCommentArray(updateCommentList);
   };
 
   useEffect(() => {
     fetch('/data/comment.json')
       .then(res => res.json())
-      .then(data =>
-        // console.log(data)
-        setCommentArray(data.commentData)
-      );
+      .then(data => {
+        setCommentArray(data.commentData);
+        console.log(data.commentData);
+      });
   }, []);
 
   return (
@@ -59,14 +79,15 @@ function Comment() {
       <div className={styles.commentList}>
         {commentArray.map(comment => {
           return (
-            <li key={comment.id}>
+            <li key={comment.comment_id}>
               <NewComment
-                id={comment.id}
+                id={comment.comment_id}
                 profile={comment.profile}
                 user={comment.user}
                 created_at={comment.created_at}
                 comment={comment.comment}
                 deleteComment={deleteComment}
+                modifyComment={modifyComment}
               />
             </li>
           );
