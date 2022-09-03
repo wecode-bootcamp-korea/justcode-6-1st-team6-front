@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './Login.module.scss';
+import logo from '../../assets/images/logo2.png';
 
 function Login() {
   const goToSignup = () => {
@@ -10,8 +11,6 @@ function Login() {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [valid, setValid] = useState(false);
-  const [token, setToken] = useState('');
-  const [disabled, setDisabled] = useState(false);
 
   const handleEmailInput = e => {
     const emailValue = e.target.value;
@@ -38,44 +37,42 @@ function Login() {
       setValid(false);
     }
   };
-  // const goToMain = () => {
-  //   if (email.length < 1 || pw.length < 1) {
-  //     setValid(true);
-  //   } else {
-  //     setValid(false);
-  //   }
-  // };
 
   const onLoginBtnClick = () => {
     const body = {
       email: email,
       password: pw,
     };
-    fetch('http://localhost:3000/users/login', {
+    fetch('hhttp://localhost:8000/user/login', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     })
       .then(res => res.json())
-      .then(json => {
-        setToken(json.access_token);
-        localStorage.setItem('token', json.access_token);
+      .then(result => {
+        // console.log(result);
+        if (result.token) {
+          localStorage.setItem('login-token', result.token);
+          goToMain();
+        } else {
+          alert('로그인 정보를 확인해 주시기 바랍니다.');
+        }
       });
   };
   return (
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} src="logo2.png" />
-          <h1 className={css.flexCenter}></h1>
-          <h2>로그인</h2>
+          <img className={css.textLogo} alt="로고" src={logo} />
+          <h1>로그인</h1>
           <div>
             <input
               className={css.textInput}
               placeholder="아이디 (이메일 주소)"
               onChange={handleEmailInput}
-            ></input>
+            />
           </div>
           <div>
             <input
@@ -83,7 +80,7 @@ function Login() {
               onChange={handlePwInput}
               className={css.textInput}
               placeholder="비밀번호"
-            ></input>
+            />
           </div>
           {!valid && (
             <div
@@ -97,7 +94,7 @@ function Login() {
             </div>
           )}
           <button
-            onClick={goToMain}
+            onClick={onLoginBtnClick}
             style={{ backgroundColor: valid ? 'black' : 'rgb(201, 204, 206)' }}
             className={`${css.loginButton} ${css.button}`}
           >

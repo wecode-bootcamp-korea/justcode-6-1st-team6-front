@@ -12,8 +12,14 @@
     "create-react-app": "^5.0.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-intersection-observer": "^9.4.0",
+    "react-js-switch": "^1.1.6",
     "react-router-dom": "^6.3.0",
-    "sass": "^1.52.3"
+    "react-slick": "^0.29.0",
+    "sass": "^1.52.3",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.5",
+    "styled-reset": "^4.4.2"
   },
   "devDependencies": {
     "eslint": "^8.17.0",

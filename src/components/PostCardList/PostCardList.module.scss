@@ -1,0 +1,14 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.postCardList {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 30px;
+  gap: 30px;
+}

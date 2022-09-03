@@ -2,7 +2,7 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: #d5b7f4;
+  background-color: white;
 }
 .flexCenter {
   display: flex;
@@ -12,7 +12,7 @@
 .textLogo {
   display: block;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   width: auto;
   height: auto;
   max-width: 200px;
@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  margin: auto;
   padding-top: 100px;
   height: 100%;
   width: 50%;

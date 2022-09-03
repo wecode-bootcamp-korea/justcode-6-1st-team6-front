@@ -1,0 +1,26 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.userSummary {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+  }
+}

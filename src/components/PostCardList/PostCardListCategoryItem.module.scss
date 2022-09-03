@@ -1,0 +1,22 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.postCardListCategoryItem {
+  display: flex;
+  margin-right: 1.5rem;
+  cursor: pointer;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    margin-left: 0.5rem;
+  }
+}
