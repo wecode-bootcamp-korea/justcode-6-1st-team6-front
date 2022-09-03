@@ -12,10 +12,6 @@ function NewPost() {
   const getSelectValue = value => {
     setOption(selectOption => ({ ...selectOption, ...value }));
   };
-  // const getSelectValue = value => {
-  //   selectOption.push(value);
-  //   setOption(selectOption);
-  // };
 
   const getTitleValue = e => {
     setTitleValue(e.currentTarget.value);
@@ -33,15 +29,25 @@ function NewPost() {
       });
   }, []);
 
-  // const handleSubmit = (event: React.FormEvent) => {
-  //   event.preventDefault();
-  // };
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    fetch('게시글 작성api', {
+      method: 'POST',
+      headers: {
+        //api명세 참고
+      },
+      body: JSON.stringify(body),
+    })
+      .then(res => res.json())
+      .then(res => {});
+  };
   return (
     <div className="newPostContainer">
       {console.log('a', selectOption)}
       {console.log('b', body)}
-      <form>
-        {/* <form onSubmit={handleSubmit}> */}
+
+      <form onSubmit={handleSubmit}>
         <NewPostSelect skills={skills} getSelectValue={getSelectValue} />
         <div className="newPostContent">
           <h2 className="title">
