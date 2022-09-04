@@ -1,0 +1,21 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.skillListFiltered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  grid-gap: 30px;
+  gap: 30px;
+
+  span {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+  }
+}

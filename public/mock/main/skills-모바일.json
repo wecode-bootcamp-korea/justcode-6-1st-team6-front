@@ -1,0 +1,34 @@
+{
+  "stacks": [
+    {
+      "id": 12,
+      "name": "Kotlin",
+      "image": "https://holaworld.io/images/languages/kotlin.svg",
+      "classification": "back,mobile"
+    },
+    {
+      "id": 21,
+      "name": "Flutter",
+      "image": "https://holaworld.io/images/languages/flutter.svg",
+      "classification": "mobile"
+    },
+    {
+      "id": 22,
+      "name": "Swift",
+      "image": "https://holaworld.io/images/languages/swift.svg",
+      "classification": "mobile"
+    },
+    {
+      "id": 23,
+      "name": "ReactNative",
+      "image": "https://holaworld.io/images/languages/reactnative.svg",
+      "classification": "mobile"
+    },
+    {
+      "id": 24,
+      "name": "Unity",
+      "image": "https://holaworld.io/images/languages/unity.svg",
+      "classification": "mobile"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  width: 100%;
+  grid-gap: 15px;
+  gap: 15px;
+}

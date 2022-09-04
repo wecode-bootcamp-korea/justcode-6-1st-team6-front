@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <circle cx="8" cy="8" r="7" fill="#8C8C8C"/>
+  <path d="M5.5 5.5L10.5 10.5" stroke="white" stroke-linecap="round"/>
+  <path d="M5.5 10.5L10.5 5.5" stroke="white" stroke-linecap="round"/>
+  <div xmlns="" id="divScriptsUsed" style="display: none"/>
+  <script xmlns="" id="globalVarsDetection" src="chrome-extension://cmkdbmfndkfgebldhnkbfhlneefdaaip/js/wrs_env.js"/>
+</svg>
