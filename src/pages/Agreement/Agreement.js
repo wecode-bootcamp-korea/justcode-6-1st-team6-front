@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './Agreement.module.scss';
 import logo from '../../assets/images/logo2.png';
+import nexticon from '../../assets/images/nexticon.png';
+import Modal from './Modal';
 
 function Agreement() {
   const navigate = useNavigate();
@@ -14,6 +16,11 @@ function Agreement() {
 
   const [agreementError, setAgreementError] = useState(false);
   const [disabled, setDisabled] = useState(false);
+
+  const [modal, setModal] = useState(false);
+  const modalShow = () => {
+    setModal(true);
+  };
 
   // 다음단계 버튼 눌렀을 때 전체 선택되어있지 않으면 에러메세지 흐음..... 여기에 버튼 눌러서 담에 가는건 어카지
 
@@ -88,6 +95,7 @@ function Agreement() {
       <div className={css.container}>
         <div>
           <img className={css.textLogo} src={logo} />
+
           <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
             <div className={`${css.allCheck} ${css.padding_10}`}>
@@ -106,6 +114,10 @@ function Agreement() {
               />
               &nbsp;만 14세 이상
               <span className={css.must}>&nbsp;(필수)</span>
+              <button className={css.nextButton} onClick={modalShow}>
+                <img className={css.nextIcon} src={nexticon} />
+              </button>
+              {modal && <Modal setModal={setModal}></Modal>}
             </div>
             <div className={css.agreeList}>
               <input
