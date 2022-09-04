@@ -59,6 +59,29 @@ function Post() {
             <span className={styles.user}>저스트코드</span>
             <span className={styles.date}>2022.08.31</span>
           </div>
+          <div className={styles.postOperationButton}>
+            <button
+              onClick={() => {
+                console.log('마감', 1);
+              }}
+            >
+              마감
+            </button>
+            <button
+              onClick={() => {
+                console.log('수정', 2);
+              }}
+            >
+              수정
+            </button>
+            <button
+              onClick={() => {
+                console.log('삭제', 3);
+              }}
+            >
+              삭제
+            </button>
+          </div>
           <div className={styles.info}>
             <ul>
               {infoArray.map(info => {

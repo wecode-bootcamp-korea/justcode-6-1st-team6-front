@@ -13,7 +13,7 @@ function NewComment({
   modifyComment,
 }) {
   const [modal, setModal] = useState(false);
-  const [isModify, setModify] = useState(false);
+  const [modify, setModify] = useState(false);
   const [text, setText] = useState('');
 
   return (
@@ -33,21 +33,21 @@ function NewComment({
             <button
               className={styles.commentModify}
               onClick={() => {
-                if (isModify) {
-                  console.log('a');
+                if (modify) {
+                  // console.log('a');
                   setModify(false);
                   setText('');
                   modifyComment(id, { comment: text });
-                  console.log('b');
+                  // console.log('b');
                   return;
                 }
-                console.log('c');
+                // console.log('c');
                 setText(comment);
                 setModify(true);
-                console.log('d');
+                // console.log('d');
               }}
             >
-              {isModify ? '저장' : '수정'}
+              {modify ? '저장' : '수정'}
             </button>
             <button
               className={styles.commentDelete}
@@ -59,7 +59,7 @@ function NewComment({
             </button>
           </div>
         </div>
-        {isModify ? (
+        {modify ? (
           <textarea
             type="text"
             value={text}

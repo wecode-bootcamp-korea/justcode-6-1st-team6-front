@@ -46,11 +46,11 @@ function Comment() {
   };
 
   useEffect(() => {
-    fetch('/data/comment.json')
+    fetch('/mock/post/comment.json')
       .then(res => res.json())
       .then(data => {
         setCommentArray(data.commentData);
-        console.log(data.commentData);
+        // console.log(data.commentData);
       });
   }, []);
 
