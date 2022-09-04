@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Post.module.scss';
 import Comment from '../Comment/Comment';
@@ -6,7 +6,6 @@ import Comment from '../Comment/Comment';
 function Post() {
   const navigate = useNavigate();
 
-  //인포 카테고리
   const [infoArray] = useState([
     { id: 0, title: '모집 구분', content: '스터디' },
     { id: 1, title: '진행 방식', content: '온라인' },
