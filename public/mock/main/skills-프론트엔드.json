@@ -1,0 +1,40 @@
+{
+  "stacks": [
+    {
+      "id": 1,
+      "name": "JavaScript",
+      "image": "https://holaworld.io/images/languages/javascript.svg",
+      "classification": "front"
+    },
+    {
+      "id": 2,
+      "name": "TypeScript",
+      "image": "https://holaworld.io/images/languages/typescript.svg",
+      "classification": "front"
+    },
+    {
+      "id": 3,
+      "name": "React",
+      "image": "https://holaworld.io/images/languages/react.svg",
+      "classification": "front"
+    },
+    {
+      "id": 4,
+      "name": "Vue",
+      "image": "https://holaworld.io/images/languages/vue.svg",
+      "classification": "front"
+    },
+    {
+      "id": 5,
+      "name": "Svelte",
+      "image": "https://holaworld.io/images/languages/svelte.svg",
+      "classification": "front"
+    },
+    {
+      "id": 6,
+      "name": "Nextjs",
+      "image": "https://holaworld.io/images/languages/nextjs.svg",
+      "classification": "front"
+    }
+  ]
+}

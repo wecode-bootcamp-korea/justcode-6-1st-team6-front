@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NewComment from './NewComment';
 import styles from './Comment.module.scss';
 
@@ -6,31 +6,59 @@ function Comment() {
   const [comment, setComment] = useState('');
   const [id, setId] = useState(1);
   const [commentArray, setCommentArray] = useState([]);
-  const [commentCount, setCommentCount] = useState(0);
 
   const addComment = () => {
     setId(id + 1);
 
     const newComment = {
-      id: id,
-      profile: <img src="/images/user.png" width={'100%'} />,
+      comment_id: id,
+      profile: '/images/user.png',
       user: 'Kevin Ahn',
-      date: '2022-08-31 4:44:44',
-      content: comment,
+      created_at: '2023-05-28 11:27:33',
+      comment,
     };
     setCommentArray([...commentArray, newComment]);
     setComment('');
   };
 
-  const count = () => {
-    setCommentCount(commentCount + 1);
+  const deleteComment = id => {
+    setCommentArray(commentArray.filter(item => item.comment_id !== id));
   };
+
+  const modifyComment = (id, body) => {
+    const originComment = commentArray.find(item => item.comment_id === id);
+    if (!originComment) return;
+
+    const updateComment = {
+      ...originComment,
+      comment: body.comment,
+    };
+
+    //서버 연결 시에 제거
+    const updateCommentList = commentArray.map(item => {
+      if (item.comment_id === id) {
+        return updateComment;
+      }
+      return item;
+    });
+
+    setCommentArray(updateCommentList);
+  };
+
+  useEffect(() => {
+    fetch('/data/comment.json')
+      .then(res => res.json())
+      .then(data => {
+        setCommentArray(data.commentData);
+        console.log(data.commentData);
+      });
+  }, []);
 
   return (
     <div className={styles.comment}>
       <div className={styles.commentForm}>
         <p className={styles.commentCount}>
-          {commentCount}개의 댓글이 있습니다.
+          {commentArray.length}개의 댓글이 있습니다.
         </p>
         <textarea
           type="text"
@@ -43,13 +71,7 @@ function Comment() {
         />
         <br />
         <div className={styles.commentButton}>
-          <button
-            type="submit"
-            onClick={() => {
-              addComment();
-              count();
-            }}
-          >
+          <button type="submit" onClick={addComment}>
             댓글 등록
           </button>
         </div>
@@ -57,13 +79,15 @@ function Comment() {
       <div className={styles.commentList}>
         {commentArray.map(comment => {
           return (
-            <li key={comment.id}>
+            <li key={comment.comment_id}>
               <NewComment
-                id={comment.id}
+                id={comment.comment_id}
                 profile={comment.profile}
                 user={comment.user}
-                date={comment.date}
-                content={comment.content}
+                created_at={comment.created_at}
+                comment={comment.comment}
+                deleteComment={deleteComment}
+                modifyComment={modifyComment}
               />
             </li>
           );
