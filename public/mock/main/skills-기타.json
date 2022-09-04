@@ -1,0 +1,46 @@
+{
+  "stacks": [
+    {
+      "id": 25,
+      "name": "AWS",
+      "image": "https://holaworld.io/images/languages/aws.svg",
+      "classification": "ect"
+    },
+    {
+      "id": 26,
+      "name": "Kubernetes",
+      "image": "https://holaworld.io/images/languages/kubernetes.svg",
+      "classification": "ect"
+    },
+    {
+      "id": 27,
+      "name": "Docker",
+      "image": "https://holaworld.io/images/languages/docker.svg",
+      "classification": "ect"
+    },
+    {
+      "id": 28,
+      "name": "Git",
+      "image": "https://holaworld.io/images/languages/git.svg",
+      "classification": "ect"
+    },
+    {
+      "id": 29,
+      "name": "Figma",
+      "image": "https://holaworld.io/images/languages/figma.svg",
+      "classification": "ect"
+    },
+    {
+      "id": 30,
+      "name": "Zeplin",
+      "image": "https://holaworld.io/images/languages/zeplin.svg",
+      "classification": "ect"
+    },
+    {
+      "id": 31,
+      "name": "Jest",
+      "image": "https://holaworld.io/images/languages/jest.svg",
+      "classification": "ect"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+/*
+ * position
+ * box model
+ * visual
+ * typography
+ * misc
+ */
+
+.skill {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px 12px 15px;
+  grid-gap: 10px;
+  gap: 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 100px;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+
+  img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.skill:hover {
+  transform: scale(1.04);
+}
