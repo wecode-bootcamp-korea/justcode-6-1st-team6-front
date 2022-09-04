@@ -72,7 +72,6 @@ function Login() {
       <div className={css.container}>
         <div>
           <img className={css.textLogo} alt="로고" src={logo} />
-
           <h1>로그인</h1>
           <div>
             <input
