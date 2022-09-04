@@ -38,12 +38,18 @@ function Login() {
     }
   };
 
+  // const onLoginBtnClick = () => {
+  //   fetch('/mock/main/users.json')
+  //     .then(res => res.json())
+  //     .then(result => {
+  //       console.log(result.data);
+  //     });
   const onLoginBtnClick = () => {
     const body = {
       email: email,
       password: pw,
     };
-    fetch('hhttp://localhost:8000/user/login', {
+    fetch('http://localhost:8000/user/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
