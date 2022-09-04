@@ -3,10 +3,6 @@ import React from 'react';
 function NewPostSelect(props) {
   const { skills, getSelectValue } = props;
 
-  // const selectChange = e => {
-  //   const { id, value } = e.target;
-  //   setInfo({ ...value, [id]: value });
-  // };
   const selectChange = e => {
     const { name, value } = e.target;
     getSelectValue({ [name]: value });
@@ -129,15 +125,6 @@ function NewPostSelect(props) {
       ],
     },
   ];
-  // const [info, setInfo] = useState({
-  //   1: '',
-  //   2: '',
-  //   3: '',
-  //   4: '',
-  //   5: '',
-  //   6: '',
-  //   7: '',
-  // });
   return (
     <div className="newPostOption">
       <h2 className="title">
@@ -190,16 +177,3 @@ function NewPostSelect(props) {
 }
 
 export default NewPostSelect;
-//   token:
-//     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NjIwMzkyOTV9.Qdpuo3TfpHXWJlszJTXZempfvvbzTG24Ag5svapy1ls',
-//   classification: '스터디',
-//   volume: '1명',
-//   onoffline: '온라인',
-//   progress_period: '2개월',
-//   stack: '1,2,3,4,5',
-//   start_date: '2022-09-09',
-//   contact: '이메일',
-//   contact_content: 'example1@gmail.com',
-//   title: titleValue,
-//   contents: contentValue,
-// };
