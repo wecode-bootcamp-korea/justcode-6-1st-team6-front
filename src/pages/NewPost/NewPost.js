@@ -19,7 +19,6 @@ function NewPost() {
   const getContentValue = e => {
     setContentValue(e.currentTarget.value);
   };
-  const body = { title: titleValue, contents: contentValue, ...selectOption };
 
   useEffect(() => {
     fetch('../data/skills.json')
@@ -31,11 +30,17 @@ function NewPost() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    const body = {
+      ...selectOption,
+      title: titleValue,
+      contents: contentValue,
+    };
 
-    fetch('게시글 작성api', {
+    fetch('http://localhost:8000/posts/', {
       method: 'POST',
       headers: {
-        //api명세 참고
+        token: localStorage.getItem('login-token'),
+        'Content-type': 'application/json',
       },
       body: JSON.stringify(body),
     })
@@ -44,9 +49,6 @@ function NewPost() {
   };
   return (
     <div className="newPostContainer">
-      {console.log('a', selectOption)}
-      {console.log('b', body)}
-
       <form onSubmit={handleSubmit}>
         <NewPostSelect skills={skills} getSelectValue={getSelectValue} />
         <div className="newPostContent">

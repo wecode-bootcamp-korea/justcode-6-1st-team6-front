@@ -4,18 +4,25 @@ import { useNavigate, Link } from 'react-router-dom';
 import css from './Header.module.scss';
 
 function Header() {
-  const [login, setlogin] = useState(true);
+  // const [login, setlogin] = useState(true);
   const [dropNav, setNav] = useState(false);
   const [alert, setAlert] = useState(false);
+
   const navData = [
-    { link: '/mylist', content: '내 작성글', login: true },
-    { link: '/edit', content: '설정', login: true },
-    { link: '/', content: '로그아웃', login: false },
+    { link: '/mylist', content: '내 작성글', login: false },
+    { link: '/edit', content: '설정', login: false },
+    { link: '/', content: '로그아웃', login: true },
   ];
 
+  // { link: '/', content: '로그아웃', login: '() =>
+  const removeToken = () => {
+    localStorage.removeItem('login-token');
+  };
   const navigate = useNavigate();
   const newPost = () => {
-    login ? navigate('./newpost') : navigate('./login');
+    localStorage.getItem('login-token')
+      ? navigate('./newpost')
+      : navigate('./login');
   };
   const navDrop = () => {
     setNav(dropNav => !dropNav);
@@ -43,7 +50,7 @@ function Header() {
               새 글 쓰기
             </div>
 
-            {login ? (
+            {localStorage.getItem('login-token') ? (
               <div className={css.dFlex}>
                 <span className={css.alertBell} onClick={alertDrop} />
                 <div className={alert ? css.dropAlert : css.hideNav}>
@@ -65,12 +72,7 @@ function Header() {
                   {navData.map((nav, idx) => {
                     return (
                       <li key={idx}>
-                        <Link
-                          to={nav.link}
-                          onClick={() => {
-                            setlogin(nav.login);
-                          }}
-                        >
+                        <Link to={nav.link} onClick={nav.login && removeToken}>
                           {nav.content}
                         </Link>
                       </li>
