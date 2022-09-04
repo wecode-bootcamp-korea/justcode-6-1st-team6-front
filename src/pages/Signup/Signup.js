@@ -54,20 +54,27 @@ function Signup() {
       nickname: nickName,
       password: password,
     };
-    fetch('http://localhost:3000/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    })
-      .then(res => res.json())
+    fetch(
+      'http://localhost:8000/user/signup?email=email@gmail.comr&nickname=닉네임&password=비밀번호',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    )
       .then(res => {
         if (res.status === 201) {
-          navigate('/login');
           alert('회원가입이 완료되었습니다.');
+          navigate('/login');
         }
-      });
+        if (res.status === 400) {
+          alert('이미 사용중인 이메일 입니다.');
+        }
+        res.json();
+      })
+      .then(res => {});
   };
   return (
     <div className={css.background}>
