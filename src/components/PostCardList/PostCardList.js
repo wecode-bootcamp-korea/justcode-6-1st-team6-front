@@ -31,8 +31,8 @@ function PostCardList(props) {
 
 function getCondition(option) {
   if (option === CATEGORY_OPTION_ALL) return '';
-  if (option === CATEGORY_OPTION_STUDY) return '프로젝트';
-  if (option === CATEGORY_OPTION_PROJECT) return '스터디';
+  if (option === CATEGORY_OPTION_PROJECT) return '프로젝트';
+  if (option === CATEGORY_OPTION_STUDY) return '스터디';
 }
 
 export default PostCardList;
