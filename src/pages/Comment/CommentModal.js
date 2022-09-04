@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Modal.module.scss';
+import styles from './CommentModal.module.scss';
 import ModalDeleteComment from './ModalDeleteComment';
 
-function Modal({ id, modal, setModal, deleteComment }) {
+function CommentModal({ id, commentModal, setCommentModal, deleteComment }) {
   return (
     <div>
       <div
@@ -15,12 +15,12 @@ function Modal({ id, modal, setModal, deleteComment }) {
           background: 'rgba(0,0,0,0.6)',
         }}
       />
-      <div className={styles.modal}>
+      <div className={styles.commentModal}>
         <div className={styles.modalWrap}>
           <ModalDeleteComment
             id={id}
-            modal={modal}
-            setModal={setModal}
+            commentModal={commentModal}
+            setCommentModal={setCommentModal}
             deleteComment={deleteComment}
           />
         </div>
@@ -29,4 +29,4 @@ function Modal({ id, modal, setModal, deleteComment }) {
   );
 }
 
-export default Modal;
+export default CommentModal;
