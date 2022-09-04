@@ -55,6 +55,21 @@
         }
       }
 
+      .postOperationButton {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -28px;
+
+        .operationButton {
+          font-size: 16px;
+          color: #444;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
       .info {
         display: flex;
         justify-content: flex-start;

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Post.module.scss';
 import Comment from '../Comment/Comment';
+// import Modal from './Modal';
 
 function Post() {
   const navigate = useNavigate();
+  // const [post, setPost]
 
   const [infoArray] = useState([
     { id: 0, title: '모집 구분', content: '스터디' },
@@ -60,23 +62,12 @@ function Post() {
             <span className={styles.date}>2022.08.31</span>
           </div>
           <div className={styles.postOperationButton}>
+            <button className={styles.operationButton}>마감</button>
+            <button className={styles.operationButton}>수정</button>
             <button
+              className={styles.operationButton}
               onClick={() => {
-                console.log('마감', 1);
-              }}
-            >
-              마감
-            </button>
-            <button
-              onClick={() => {
-                console.log('수정', 2);
-              }}
-            >
-              수정
-            </button>
-            <button
-              onClick={() => {
-                console.log('삭제', 3);
+                console.log('삭제', 1);
               }}
             >
               삭제

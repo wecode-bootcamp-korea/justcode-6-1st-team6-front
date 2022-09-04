@@ -1,0 +1,88 @@
+{
+  "stacks": [
+    {
+      "id": 7,
+      "name": "Nodejs",
+      "image": "https://holaworld.io/images/languages/nodejs.svg",
+      "classification": "back"
+    },
+    {
+      "id": 8,
+      "name": "Java",
+      "image": "https://holaworld.io/images/languages/java.svg",
+      "classification": "back"
+    },
+    {
+      "id": 9,
+      "name": "Spring",
+      "image": "https://holaworld.io/images/languages/spring.svg",
+      "classification": "back"
+    },
+    {
+      "id": 10,
+      "name": "Go",
+      "image": "https://holaworld.io/images/languages/go.svg",
+      "classification": "back"
+    },
+    {
+      "id": 11,
+      "name": "Nestjs",
+      "image": "https://holaworld.io/images/languages/nestjs.svg",
+      "classification": "back"
+    },
+    {
+      "id": 12,
+      "name": "Kotlin",
+      "image": "https://holaworld.io/images/languages/kotlin.svg",
+      "classification": "back,mobile"
+    },
+    {
+      "id": 13,
+      "name": "Express",
+      "image": "https://holaworld.io/images/languages/express.svg",
+      "classification": "back"
+    },
+    {
+      "id": 14,
+      "name": "MySQL",
+      "image": "https://holaworld.io/images/languages/mysql.svg",
+      "classification": "back"
+    },
+    {
+      "id": 15,
+      "name": "MongoDB",
+      "image": "https://holaworld.io/images/languages/mongodb.svg",
+      "classification": "back"
+    },
+    {
+      "id": 16,
+      "name": "Python",
+      "image": "https://holaworld.io/images/languages/python.svg",
+      "classification": "back"
+    },
+    {
+      "id": 17,
+      "name": "Django",
+      "image": "https://holaworld.io/images/languages/django.svg",
+      "classification": "back"
+    },
+    {
+      "id": 18,
+      "name": "php",
+      "image": "https://holaworld.io/images/languages/php.svg",
+      "classification": "back"
+    },
+    {
+      "id": 19,
+      "name": "GraphQL",
+      "image": "https://holaworld.io/images/languages/graphql.svg",
+      "classification": "back"
+    },
+    {
+      "id": 20,
+      "name": "Firebase",
+      "image": "https://holaworld.io/images/languages/firebase.svg",
+      "classification": "back"
+    }
+  ]
+}

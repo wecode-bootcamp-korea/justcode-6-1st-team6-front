@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './ModalDeleteComment.module.scss';
 
-function ModalDeleteComment({ id, modal, setModal, deleteComment }) {
+function ModalDeleteComment({
+  id,
+  commentModal,
+  setCommentModal,
+  deleteComment,
+}) {
   return (
     <>
       <div className={styles.modalWrap}>
@@ -11,7 +16,7 @@ function ModalDeleteComment({ id, modal, setModal, deleteComment }) {
             <button
               className={styles.cancelButton}
               onClick={() => {
-                setModal(!modal);
+                setCommentModal(!commentModal);
               }}
             >
               아니요

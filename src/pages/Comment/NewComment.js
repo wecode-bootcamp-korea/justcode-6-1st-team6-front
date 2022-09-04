@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
-import Modal from './Modal';
+import CommentModal from './CommentModal';
 import commentStyles from './Comment.module.scss';
 
 function NewComment({
@@ -12,7 +12,7 @@ function NewComment({
   deleteComment,
   modifyComment,
 }) {
-  const [modal, setModal] = useState(false);
+  const [commentModal, setCommentModal] = useState(false);
   const [modify, setModify] = useState(false);
   const [text, setText] = useState('');
 
@@ -52,7 +52,7 @@ function NewComment({
             <button
               className={styles.commentDelete}
               onClick={() => {
-                setModal(!modal);
+                setCommentModal(!commentModal);
               }}
             >
               삭제
@@ -73,11 +73,11 @@ function NewComment({
           <div className={styles.commentContent}>{comment}</div>
         )}
       </div>
-      {modal === true ? (
-        <Modal
+      {commentModal === true ? (
+        <CommentModal
           id={id}
-          modal={modal}
-          setModal={setModal}
+          commentModal={commentModal}
+          setCommentModal={setCommentModal}
           deleteComment={deleteComment}
         />
       ) : null}
