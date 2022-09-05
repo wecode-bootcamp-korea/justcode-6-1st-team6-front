@@ -1,15 +1,16 @@
 {
   "postData": {
-    "id": 1,
+    "title": "저스트코드 6기 동기들과 함께 프로젝트 진행하실 분 모집합니다!",
+    "nickname": "eden",
+    "profile_image": "/images/user.png",
+    "create_at": "2022-08-31",
     "classification": "프로젝트",
-    "volume": 4,
-    "onoffline": "오프라인",
-    "progress_period": "1개월",
-    "stack": "1, 2, 5, 13",
-    "start_date": "2022-10-10",
-    "contact": "이메일",
-    "contact_content": "justasdasdacode@gmail.com",
-    "title": "바뀐 타이틀",
+    "volume": "인원 미정",
+    "onoffline": "온라인",
+    "start_date": "2022-12-31",
+    "contact_content": "justcode6@gmail.com",
+    "progress_period": "6개월",
+    "stack": "[{\"stack_name\": \"JavaScript\", \"stack_image\": \"https://holaworld.io/images/languages/javascript.svg\"}, {\"stack_name\": \"Go\", \"stack_image\": \"https://holaworld.io/images/languages/go.svg\"}, {\"stack_name\": \"MongoDB\", \"stack_image\": \"https://holaworld.io/images/languages/mongodb.svg\"}]",
     "contents": "안녕하세요. 온라인 위워크에서 JavaScript와 React 그리고 node.js, express, MySQL을 이용해서 프로젝트 하실 분 모집합니다! 구현해보고 싶은 사이트를 정해서 서로 역할을 나누어 클론 코딩을 진행할 예정입니다. 일주일에 한 번씩 위워크에서 모여 오프라인 미팅을 진행할 예정입니다. 프로젝트를 같이 해나가실 분은 상단의 이메일로 연락주세요~"
   }
 }

@@ -24,6 +24,9 @@
       }
 
       .postTitle {
+        display: flex;
+        justify-content: flex-start;
+
         h1 {
           font-weight: 700;
           font-size: 3rem;
@@ -40,6 +43,11 @@
         border-bottom: 3px solid #f2f2f2;
 
         font-size: 18px;
+
+        .profileImage {
+          width: 48px;
+          height: 48px;
+        }
 
         .user {
           padding-right: 20px;
@@ -102,6 +110,17 @@
               color: #717171;
             }
 
+            .infoContact {
+              padding: 8px 12px;
+              background-color: #f2f4f8;
+              border-radius: 10px;
+
+              .infoContent {
+                font-size: 15px;
+                color: #4a5e75;
+              }
+            }
+
             img {
               margin-right: 12px;
             }
@@ -132,7 +151,7 @@
           p {
             margin: 25px 0;
             font-size: 1.125rem;
-            line-height: 1.7;
+            line-height: 2;
           }
         }
       }
