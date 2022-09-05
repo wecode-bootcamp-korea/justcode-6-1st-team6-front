@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
-import Modal from './Modal';
+import CommentModal from './CommentModal';
 import commentStyles from './Comment.module.scss';
 
 function NewComment({
@@ -12,8 +12,8 @@ function NewComment({
   deleteComment,
   modifyComment,
 }) {
-  const [modal, setModal] = useState(false);
-  const [isModify, setModify] = useState(false);
+  const [commentModal, setCommentModal] = useState(false);
+  const [modify, setModify] = useState(false);
   const [text, setText] = useState('');
 
   return (
@@ -33,33 +33,33 @@ function NewComment({
             <button
               className={styles.commentModify}
               onClick={() => {
-                if (isModify) {
-                  console.log('a');
+                if (modify) {
+                  // console.log('a');
                   setModify(false);
                   setText('');
                   modifyComment(id, { comment: text });
-                  console.log('b');
+                  // console.log('b');
                   return;
                 }
-                console.log('c');
+                // console.log('c');
                 setText(comment);
                 setModify(true);
-                console.log('d');
+                // console.log('d');
               }}
             >
-              {isModify ? '저장' : '수정'}
+              {modify ? '저장' : '수정'}
             </button>
             <button
               className={styles.commentDelete}
               onClick={() => {
-                setModal(!modal);
+                setCommentModal(!commentModal);
               }}
             >
               삭제
             </button>
           </div>
         </div>
-        {isModify ? (
+        {modify ? (
           <textarea
             type="text"
             value={text}
@@ -73,11 +73,11 @@ function NewComment({
           <div className={styles.commentContent}>{comment}</div>
         )}
       </div>
-      {modal === true ? (
-        <Modal
+      {commentModal === true ? (
+        <CommentModal
           id={id}
-          modal={modal}
-          setModal={setModal}
+          commentModal={commentModal}
+          setCommentModal={setCommentModal}
           deleteComment={deleteComment}
         />
       ) : null}

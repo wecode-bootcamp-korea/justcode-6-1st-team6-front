@@ -1,0 +1,15 @@
+{
+  "postData": {
+    "id": 1,
+    "classification": "프로젝트",
+    "volume": 4,
+    "onoffline": "오프라인",
+    "progress_period": "1개월",
+    "stack": "1, 2, 5, 13",
+    "start_date": "2022-10-10",
+    "contact": "이메일",
+    "contact_content": "justasdasdacode@gmail.com",
+    "title": "바뀐 타이틀",
+    "contents": "안녕하세요. 온라인 위워크에서 JavaScript와 React 그리고 node.js, express, MySQL을 이용해서 프로젝트 하실 분 모집합니다! 구현해보고 싶은 사이트를 정해서 서로 역할을 나누어 클론 코딩을 진행할 예정입니다. 일주일에 한 번씩 위워크에서 모여 오프라인 미팅을 진행할 예정입니다. 프로젝트를 같이 해나가실 분은 상단의 이메일로 연락주세요~"
+  }
+}
