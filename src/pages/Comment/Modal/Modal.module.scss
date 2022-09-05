@@ -1,0 +1,55 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 350px;
+  height: 200px;
+
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+
+  .modalDelete {
+    text-align: center;
+
+    p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .cancelButton {
+      margin-right: 16px;
+    }
+
+    .deleteButton {
+      background-color: black;
+      color: white;
+    }
+
+    button {
+      height: 30px;
+      padding: 0 16px;
+
+      border: none;
+      outline: none;
+      border-radius: 4px;
+
+      font-size: 16px;
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

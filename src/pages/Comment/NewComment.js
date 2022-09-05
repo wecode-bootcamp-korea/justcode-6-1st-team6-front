@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
 import CommentModal from './CommentModal';
-import commentStyles from './Comment.module.scss';
 
 function NewComment({
   id,
@@ -63,7 +62,7 @@ function NewComment({
           <textarea
             type="text"
             value={text}
-            className={commentStyles.commentInput}
+            className={styles.commentInput}
             placeholder="댓글을 입력하세요."
             onChange={event => {
               setText(event.target.value);
