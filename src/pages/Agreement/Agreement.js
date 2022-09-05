@@ -126,10 +126,6 @@ function Agreement() {
               />
               &nbsp;만 14세 이상
               <span className={css.must}>&nbsp;(필수)</span>
-              <button className={css.nextButton} onClick={modalShow}>
-                <img className={css.nextIcon} src={nexticon} />
-              </button>
-              {modal && <Modal setModal={setModal}></Modal>}
             </div>
             <div className={css.agreeList}>
               <input
