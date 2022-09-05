@@ -43,8 +43,8 @@ function Post() {
             <span className={styles.date}>{post.create_at}</span>
           </div>
           <div className={styles.postOperationButton}>
-            <button className={styles.operationButton}>마감</button>
-            <button className={styles.operationButton}>수정</button>
+            {/* <button className={styles.operationButton}>마감</button>
+            <button className={styles.operationButton}>수정</button> */}
             <button
               className={styles.operationButton}
               // onClick={() => {
