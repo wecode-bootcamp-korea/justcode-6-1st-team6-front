@@ -10,11 +10,14 @@
   .modal {
     position: absolute;
     width: 400px;
-    height: 250px;
+
+    height: 500px;
+
     background-color: #fff;
     // Modal 창 브라우저 가운데로 조정
     left: 50%;
     top: 50%;
+    padding: 15px;
     transform: translate(-50%, -50%);
     z-index: 100;
 
@@ -23,9 +26,34 @@
       left: 100%;
       top: 0%;
       transform: translate(-50%, -50%);
+      color: white;
+      background-color: black;
     }
-    .law {
-      padding-left: 20px;
+    .title {
+      font-weight: bold;
+    }
+    .content {
+      display: flex;
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 16px;
+      overflow: scroll;
+      border: 1px solid rgb(216, 215, 215);
+      font-size: 14px;
+      line-height: 17px;
+      background-color: rgb(237, 228, 244);
+    }
+    .agreeButton {
+      display: block;
+      width: 130px;
+      height: 25px;
+      margin: auto;
+      color: white;
+      background-color: black;
+      border: none;
+      font-weight: 10px;
     }
   }
 }

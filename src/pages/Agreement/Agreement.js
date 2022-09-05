@@ -94,7 +94,8 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} src={logo} />
+
+          <img className={css.textLogo} alt="로고" src={logo} />
 
           <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
@@ -105,6 +106,18 @@ function Agreement() {
                 onChange={allBtnCheck}
               />{' '}
               네, 모두 동의합니다.
+              <span>
+                <button className={css.detail} onClick={modalShow}>
+                  {' '}
+                  약관 자세히 보기
+                  <img className={css.nextIcon} alt="화살표" src={nexticon} />
+                </button>
+                {modal && (
+                  <Modal setModal={setModal} allBtn={allBtnCheck}>
+                    {' '}
+                  </Modal>
+                )}
+              </span>
             </div>
             <div className={css.agreeList}>
               <input
@@ -158,4 +171,5 @@ function Agreement() {
     </div>
   );
 }
+
 export default Agreement;
