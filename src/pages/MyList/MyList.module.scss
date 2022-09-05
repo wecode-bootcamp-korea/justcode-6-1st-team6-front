@@ -1,0 +1,21 @@
+.container {
+  padding: 170px 0 85px;
+
+  .postCardListTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    img {
+      width: 24;
+      height: 24;
+      fill: none;
+    }
+
+    span {
+      margin-left: 0.5rem;
+    }
+  }
+}

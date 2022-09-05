@@ -23,7 +23,7 @@ function Router() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/newpost" element={<NewPost />} />
         <Route path="/edit" element={<Edit />} />
-        <Route path="/mylist" element={<MyList />} />
+        <Route path="/my-list" element={<MyList />} />
         <Route path="/agreement" element={<Agreement />} />
         <Route path="/post/:postId" element={<Post />} />
       </Routes>
