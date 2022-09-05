@@ -54,6 +54,7 @@ function Signup() {
       nickname: nickName,
       password: password,
     };
+    // 쿼리스트링으로 회원가입 주소 입력하면 안됨. 현정님이랑 수정 예정
     fetch(
       'http://localhost:8000/user/signup?email=email@gmail.comr&nickname=닉네임&password=비밀번호',
       {
@@ -72,7 +73,7 @@ function Signup() {
         if (res.status === 400) {
           alert('이미 사용중인 이메일 입니다.');
         }
-        res.json();
+        // res.json();
       })
       .then(res => {});
   };

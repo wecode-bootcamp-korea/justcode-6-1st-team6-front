@@ -1,8 +1,9 @@
 import React from 'react';
-
 import css from './Modal.module.scss';
+import ModalHeader from './ModalHeader';
+import ModalContent from './ModalContent';
 
-function Modal({ setModal }) {
+function Modal({ title, setModal, children }) {
   const modalClose = () => {
     setModal(false);
   };
@@ -12,14 +13,15 @@ function Modal({ setModal }) {
         <button className={css.modalButton} onClick={modalClose}>
           X
         </button>
-        <p className={css.law}>
-          개인정보 보호법 제 22조, 제 39조의 3항에 의해 만 14세 미만 아동의 개인
-          정보를 처리하기 위해 동의를 받아야 할 때는 그 법정대리인의 동의가
-          필요합니다.
-        </p>
+        {/* <ModalHeader value={title}>
+          {title.map((idx) => {
+            key={idx} 
+          }}
+        </ModalHeader> */}
+        {/* <ModalContent className={css.law}>{children}</ModalContent> */}
+        <content>{children}</content>
       </div>
     </div>
   );
 }
-
 export default Modal;
