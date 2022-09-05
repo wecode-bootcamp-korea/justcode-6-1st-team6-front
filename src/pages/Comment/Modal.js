@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './Modal.module.scss';
-import ModalDeleteComment from './ModalDeleteComment';
+import styles from './ModalDeleteComment.module.scss';
 
-function Modal({ id, modal, setModal, deleteComment }) {
+function Modal({ visible, text, cancelText, onClose, confirmText, onConfirm }) {
+  if (!visible) return null;
   return (
     <div>
       <div
@@ -15,14 +15,21 @@ function Modal({ id, modal, setModal, deleteComment }) {
           background: 'rgba(0,0,0,0.6)',
         }}
       />
-      <div className={styles.modal}>
+      <div className={styles.commentModal}>
         <div className={styles.modalWrap}>
-          <ModalDeleteComment
-            id={id}
-            modal={modal}
-            setModal={setModal}
-            deleteComment={deleteComment}
-          />
+          <div className={styles.modalWrap}>
+            <div className={styles.modalDeleteComment}>
+              <p>{text}</p>
+              <div className={styles.modalButton}>
+                <button className={styles.cancelButton} onClick={onClose}>
+                  {cancelText}
+                </button>
+                <button className={styles.deleteButton} onClick={onConfirm}>
+                  {confirmText}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
