@@ -94,7 +94,6 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-
           <img className={css.textLogo} alt="로고" src={logo} />
 
           <h1>서비스 이용약관에 동의</h1>
