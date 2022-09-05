@@ -21,14 +21,14 @@ function NewPost() {
   };
 
   useEffect(() => {
-    fetch('../data/skills.json')
+    fetch('../mock/post/skills.json')
       .then(res => res.json())
       .then(skills => {
         setSkills(skills);
       });
   }, []);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = event => {
     event.preventDefault();
     const body = {
       ...selectOption,
@@ -45,7 +45,9 @@ function NewPost() {
       body: JSON.stringify(body),
     })
       .then(res => res.json())
-      .then(res => {});
+      .then(res => {
+        console.log(res);
+      });
   };
   return (
     <div className="newPostContainer">
