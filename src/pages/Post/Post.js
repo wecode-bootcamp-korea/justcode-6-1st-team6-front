@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Post.module.scss';
 import Comment from '../Comment/Comment';
@@ -6,27 +6,15 @@ import Comment from '../Comment/Comment';
 
 function Post() {
   const navigate = useNavigate();
-  // const [post, setPost]
+  const [post, setPost] = useState({});
 
-  const [infoArray] = useState([
-    { id: 0, title: '모집 구분', content: '스터디' },
-    { id: 1, title: '진행 방식', content: '온라인' },
-    { id: 2, title: '모집 인원', content: '인원 미정' },
-    { id: 3, title: '시작 예정', content: '2022.10.29' },
-    { id: 4, title: '연락 방법', content: 'justcode6@justcode.com' },
-    { id: 5, title: '예상 기간', content: '1개월' },
-    {
-      id: 6,
-      title: '사용 언어',
-      imgSrc: [
-        '/images/javascript.png',
-        '/images/react.png',
-        '/images/nodejs.png',
-        '/images/express.png',
-        '/images/mysql.png',
-      ],
-    },
-  ]);
+  useEffect(() => {
+    fetch('/mock/post/post.json')
+      .then(res => res.json())
+      .then(data => {
+        setPost(data.postData);
+      });
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -47,65 +35,59 @@ function Post() {
             </button>
           </div>
           <div className={styles.postTitle}>
-            <h1>
-              온라인 위워크에서 JUSTCODE 동기들과 같이 프로젝트 하실 분 구해요 !
-            </h1>
+            <h1>{post.title}</h1>
           </div>
           <div className={styles.postUser}>
-            <img
-              alt="프로필사진"
-              src="/images/user.png"
-              width="35px"
-              height="35px"
-            />
-            <span className={styles.user}>저스트코드</span>
-            <span className={styles.date}>2022.08.31</span>
+            <span className={styles.profile_image}>
+              <img src={post.profile_image} width={'48px'} />
+            </span>
+            <span className={styles.user}>{post.nickname}</span>
+            <span className={styles.date}>{post.create_at}</span>
           </div>
           <div className={styles.postOperationButton}>
             <button className={styles.operationButton}>마감</button>
             <button className={styles.operationButton}>수정</button>
             <button
               className={styles.operationButton}
-              onClick={() => {
-                console.log('삭제', 1);
-              }}
+              // onClick={() => {
+              //   console.log('삭제', 1);
+              // }}
             >
               삭제
             </button>
           </div>
           <div className={styles.info}>
             <ul>
-              {infoArray.map(info => {
-                switch (info.id) {
-                  case 6: {
-                    const list = info.imgSrc ?? [];
-                    return (
-                      <li key={info.id}>
-                        <p className={styles.infoTitle}>{info.title}</p>
-                        <div className={styles.infoIcon}>
-                          {list.map(img => (
-                            <img
-                              key={img}
-                              alt={img}
-                              src={img}
-                              width={'36px'}
-                              height={'36px'}
-                            />
-                          ))}
-                        </div>
-                      </li>
-                    );
-                  }
-                  default: {
-                    return (
-                      <li key={info.id}>
-                        <p className={styles.infoTitle}>{info.title}</p>
-                        <p className={styles.infoContent}>{info.content}</p>
-                      </li>
-                    );
-                  }
-                }
-              })}
+              <li>
+                <p className={styles.infoTitle}>모집 구분</p>
+                <p className={styles.infoContent}>{post.classification}</p>
+              </li>
+              <li>
+                <p className={styles.infoTitle}>진행 방식</p>
+                <p className={styles.infoContent}>{post.onoffline}</p>
+              </li>
+              <li>
+                <p className={styles.infoTitle}>모집 인원</p>
+                <p className={styles.infoContent}>{post.volume}</p>
+              </li>
+              <li>
+                <p className={styles.infoTitle}>시작 예정</p>
+                <p className={styles.infoContent}>{post.start_date}</p>
+              </li>
+              <li>
+                <p className={styles.infoTitle}>연락 방법</p>
+                <p className={styles.infoContent}>{post.contact_content}</p>
+              </li>
+              <li>
+                <p className={styles.infoTitle}>예상 기간</p>
+                <p className={styles.infoContent}>{post.progress_period}</p>
+              </li>
+              <li>
+                <p className={styles.infoTitle}>사용 언어</p>
+                <p className={styles.infoContent}>
+                  <img src={post.stack} />
+                </p>
+              </li>
             </ul>
           </div>
         </section>
@@ -115,19 +97,7 @@ function Post() {
               <h2>프로젝트 소개</h2>
             </div>
             <div className={styles.contentIntro}>
-              <p>
-                안녕하세요. 온라인 위워크에서 JavaScript와 React 그리고 node.js,
-                express, MySQL을 이용해서 프로젝트 하실 분 모집합니다 !
-              </p>
-              <p>
-                구현해보고 싶은 사이트를 정해서 서로 역할을 나누어 클론 코딩을
-                진행할 예정입니다.
-              </p>
-              <p>
-                일주일에 한 번씩 위워크에서 모여 오프라인 미팅을 진행할
-                예정입니다.
-              </p>
-              <p>프로젝트를 같이 해나가실 분은 상단의 이메일로 연락주세요 ~</p>
+              <p>{post.contents}</p>
             </div>
           </div>
         </div>

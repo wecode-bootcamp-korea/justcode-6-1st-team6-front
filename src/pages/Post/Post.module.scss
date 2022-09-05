@@ -24,6 +24,9 @@
       }
 
       .postTitle {
+        display: flex;
+        justify-content: flex-start;
+
         h1 {
           font-weight: 700;
           font-size: 3rem;
@@ -132,7 +135,7 @@
           p {
             margin: 25px 0;
             font-size: 1.125rem;
-            line-height: 1.7;
+            line-height: 2;
           }
         }
       }
