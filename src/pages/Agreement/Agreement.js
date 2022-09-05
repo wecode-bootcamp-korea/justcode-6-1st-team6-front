@@ -94,7 +94,7 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-          <img className={css.textLogo} src={logo} />
+          <img className={css.textLogo} alt="로고" src={logo} />
           <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
             <div className={`${css.allCheck} ${css.padding_10}`}>
@@ -104,6 +104,18 @@ function Agreement() {
                 onChange={allBtnCheck}
               />{' '}
               네, 모두 동의합니다.
+              <span>
+                <button className={css.detail} onClick={modalShow}>
+                  {' '}
+                  약관 자세히 보기
+                  <img className={css.nextIcon} alt="화살표" src={nexticon} />
+                </button>
+                {modal && (
+                  <Modal setModal={setModal} allBtn={allBtnCheck}>
+                    {' '}
+                  </Modal>
+                )}
+              </span>
             </div>
             <div className={css.agreeList}>
               <input
@@ -113,16 +125,6 @@ function Agreement() {
               />
               &nbsp;만 14세 이상
               <span className={css.must}>&nbsp;(필수)</span>
-              <button className={css.nextButton} onClick={modalShow}>
-                <img className={css.nextIcon} src={nexticon} />
-              </button>
-              {modal && (
-                <Modal title="만 14세 이상 동의" setModal={setModal}>
-                  개인정보 보호법 제 22조, 제 39조의 3항에 의해 만 14세 미만
-                  아동의 개인 정보를 처리하기 위해 동의를 받아야 할 때는 그
-                  법정대리인의 동의가 필요합니다.
-                </Modal>
-              )}
             </div>
             <div className={css.agreeList}>
               <input
@@ -132,14 +134,6 @@ function Agreement() {
               />
               &nbsp;서비스 이용약관에 동의
               <span className={css.must}>&nbsp;(필수)</span>
-              <button className={css.nextButton} onClick={modalShow}>
-                <img className={css.nextIcon} src={nexticon} />
-              </button>
-              {modal && (
-                <Modal title="서비스 이용약관에 동의" setModal={setModal}>
-                  서비스 이용약관 어쩌구
-                </Modal>
-              )}
             </div>
             <div className={css.agreeList}>
               <input
@@ -149,14 +143,6 @@ function Agreement() {
               />
               &nbsp;개인정보 수집, 이용에 동의
               <span className={css.must}>&nbsp;(필수)</span>
-              <button className={css.nextButton} onClick={modalShow}>
-                <img className={css.nextIcon} src={nexticon} />
-              </button>
-              {modal && (
-                <Modal title="개인정보 수집, 이용에 동의" setModal={setModal}>
-                  개인정보 수집 어쩌구
-                </Modal>
-              )}
             </div>
           </div>
           {agreementError && (
@@ -179,4 +165,5 @@ function Agreement() {
     </div>
   );
 }
+
 export default Agreement;
