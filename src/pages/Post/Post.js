@@ -38,9 +38,7 @@ function Post() {
             <h1>{post.title}</h1>
           </div>
           <div className={styles.postUser}>
-            <span className={styles.profile_image}>
-              <img src={post.profile_image} width={'48px'} />
-            </span>
+            <img className={styles.profileImage} src={post.profile_image} />
             <span className={styles.user}>{post.nickname}</span>
             <span className={styles.date}>{post.create_at}</span>
           </div>
@@ -76,7 +74,9 @@ function Post() {
               </li>
               <li>
                 <p className={styles.infoTitle}>연락 방법</p>
-                <p className={styles.infoContent}>{post.contact_content}</p>
+                <div className={styles.infoContact}>
+                  <p className={styles.infoContent}>{post.contact_content}</p>
+                </div>
               </li>
               <li>
                 <p className={styles.infoTitle}>예상 기간</p>
