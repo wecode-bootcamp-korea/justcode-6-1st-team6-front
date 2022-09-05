@@ -76,7 +76,6 @@ function Signup() {
           alert('이미 사용중인 이메일 입니다.');
         }
         // res.json();
-
       })
       .then(res => {});
   };
@@ -99,6 +98,7 @@ function Signup() {
               className={css.textInput}
               placeholder="Email 주소 입력 (@ 포함)"
             />
+
             {emailError && (
               <div style={{ color: 'red', textAlign: 'center' }}>
                 이메일 양식을 확인하세요
