@@ -60,4 +60,5 @@ function Modal({ setModal, allBtn }) {
     </div>
   );
 }
+
 export default Modal;

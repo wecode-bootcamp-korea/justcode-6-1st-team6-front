@@ -16,17 +16,17 @@ footer {
     margin: 0 20px 30px 0;
 
     &:nth-child(1) {
-      background: url('../../images/facebook_icon.png');
+      background: url('../../assets/images/facebook_icon.png');
       background-repeat: no-repeat;
       background-size: cover;
     }
     &:nth-child(2) {
-      background: url('../../images/instagram_icon.png');
+      background: url('../../assets/images/instagram_icon.png');
       background-repeat: no-repeat;
       background-size: cover;
     }
     &:nth-last-child(1) {
-      background: url('../../images/twitter_icon.png');
+      background: url('../../assets/images/twitter_icon.png');
       background-repeat: no-repeat;
       background-size: cover;
       margin-right: 0px;
