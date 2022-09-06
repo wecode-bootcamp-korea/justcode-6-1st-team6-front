@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Edit.scss';
 import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
 
-function Edit({ userInfo, stack, useStacks }) {
+function Edit({ userInfo, stack, userStacks }) {
   const defaultValue = userInfo;
-  const [selectStack, setSelect] = useState([]);
-  const [nickName, setNickName] = useState(userInfo.nickname);
-  const options = stack.map(data => {
-    return { key: data.id, value: data.id, label: data.name };
-  });
+  const [selectStack, setSelect] = useState(null);
+  const [nickName, setNickName] = useState();
+  // const selectedValue = useRef();
+  // const options = stack.map(data => {
+  //   return { key: data.id, value: data.id, label: data.name };
+  // });
 
   console.log('위', selectStack);
-  console.log('위2', defaultValue);
+  console.log('위2', userStacks[1]);
 
   const selectChange = e => {
-    setSelect(e.target.options.value);
+    setSelect(e.target.value);
   };
+  // const selectChange = () => {
+  //   return selectedValue;
+  // };
   const getValue = e => {
     setNickName(e.target.value);
   };
@@ -60,21 +63,28 @@ function Edit({ userInfo, stack, useStacks }) {
           <div className="interestTag borderBottom">
             <div className="inputGroup">
               <h3>관심 기술 태그</h3>
-              {/* <select onChange={selectChange}>
+              <select onChange={selectChange} defaultValue={userStacks[2]}>
                 {stack.map(data => {
                   return (
-                    <option key={data.id} value={data.id}>
+                    <option
+                      key={data.id}
+                      value={data.id}
+                      selected={data.id === userStacks[0] && 'selected'}
+                    >
                       {data.name}
                     </option>
                   );
                 })}
-              </select> */}
-              <Select
+              </select>
+              {/* <Select
+                selectValue={selectedValue}
                 options={options}
-                defaultValue={useStacks}
+                onChange={selectChange}
+                isOptionSelected
+                defaultValue={(1, 2)}
                 isMulti
                 className="width_60"
-              />
+              /> */}
             </div>
             <span>관심 있는 기술 태그를 등록해주세요.</span>
           </div>

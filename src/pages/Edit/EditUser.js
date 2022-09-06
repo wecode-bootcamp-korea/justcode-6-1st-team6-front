@@ -4,7 +4,7 @@ import Edit from './Edit';
 
 function EditUser() {
   const [userInfo, setUser] = useState();
-  const [userStack, setUserStack] = useState('');
+  const [userStack, setUserStack] = useState([]);
   const userStacks = userStack.map(data => {
     return data.stack_id;
   });
@@ -26,6 +26,7 @@ function EditUser() {
       });
   }, []);
   console.log('부모2', userStacks);
+
   return <Edit stack={stack} userInfo={userInfo} userStacks={userStacks} />;
 }
 
