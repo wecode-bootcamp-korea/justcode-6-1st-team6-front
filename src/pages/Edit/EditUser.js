@@ -4,6 +4,10 @@ import Edit from './Edit';
 
 function EditUser() {
   const [userInfo, setUser] = useState();
+  const [userStack, setUserStack] = useState('');
+  const userStacks = userStack.map(data => {
+    return data.stack_id;
+  });
   const [stack, setStack] = useState([]);
 
   useEffect(() => {
@@ -18,11 +22,11 @@ function EditUser() {
       .then(res => res.json())
       .then(res => {
         setUser(res.user[0].nickname);
-        console.log('부모', typeof userInfo);
+        setUserStack(res.user[0].stack);
       });
   }, []);
-  console.log('부모2', userInfo);
-  return <Edit stack={stack} userInfo={userInfo} />;
+  console.log('부모2', userStacks);
+  return <Edit stack={stack} userInfo={userInfo} userStacks={userStacks} />;
 }
 
 export default EditUser;

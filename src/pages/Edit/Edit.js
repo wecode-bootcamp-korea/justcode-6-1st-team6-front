@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import './Edit.scss';
 import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 
-function Edit({ userInfo, stack }) {
+function Edit({ userInfo, stack, useStacks }) {
   const defaultValue = userInfo;
   const [selectStack, setSelect] = useState([]);
-  const [nickName, setNickName] = useState(defaultValue);
+  const [nickName, setNickName] = useState(userInfo.nickname);
+  const options = stack.map(data => {
+    return { key: data.id, value: data.id, label: data.name };
+  });
 
-  console.log('위', userInfo);
+  console.log('위', selectStack);
   console.log('위2', defaultValue);
 
   const selectChange = e => {
-    setSelect(e.target.value);
+    setSelect(e.target.options.value);
   };
   const getValue = e => {
     setNickName(e.target.value);
@@ -56,7 +60,7 @@ function Edit({ userInfo, stack }) {
           <div className="interestTag borderBottom">
             <div className="inputGroup">
               <h3>관심 기술 태그</h3>
-              <select onChange={selectChange}>
+              {/* <select onChange={selectChange}>
                 {stack.map(data => {
                   return (
                     <option key={data.id} value={data.id}>
@@ -64,7 +68,13 @@ function Edit({ userInfo, stack }) {
                     </option>
                   );
                 })}
-              </select>
+              </select> */}
+              <Select
+                options={options}
+                defaultValue={useStacks}
+                isMulti
+                className="width_60"
+              />
             </div>
             <span>관심 있는 기술 태그를 등록해주세요.</span>
           </div>
