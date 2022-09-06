@@ -1,30 +1,188 @@
 [
   {
     "id": 1,
-    "name": "Javascript"
+    "name": "JavaScript",
+    "image": "https://holaworld.io/images/languages/javascript.svg",
+    "classification": "front"
   },
   {
     "id": 2,
-    "name": "script"
+    "name": "TypeScript",
+    "image": "https://holaworld.io/images/languages/typescript.svg",
+    "classification": "front"
   },
   {
     "id": 3,
-    "name": "React"
+    "name": "React",
+    "image": "https://holaworld.io/images/languages/react.svg",
+    "classification": "front"
   },
   {
     "id": 4,
-    "name": "Vue"
+    "name": "Vue",
+    "image": "https://holaworld.io/images/languages/vue.svg",
+    "classification": "front"
   },
   {
     "id": 5,
-    "name": "Svelte"
+    "name": "Svelte",
+    "image": "https://holaworld.io/images/languages/svelte.svg",
+    "classification": "front"
   },
   {
     "id": 6,
-    "name": "Nextjs"
+    "name": "Nextjs",
+    "image": "https://holaworld.io/images/languages/nextjs.svg",
+    "classification": "front"
   },
   {
     "id": 7,
-    "name": "Nodejs"
+    "name": "Nodejs",
+    "image": "https://holaworld.io/images/languages/nodejs.svg",
+    "classification": "back"
+  },
+  {
+    "id": 8,
+    "name": "Java",
+    "image": "https://holaworld.io/images/languages/java.svg",
+    "classification": "back"
+  },
+  {
+    "id": 9,
+    "name": "Spring",
+    "image": "https://holaworld.io/images/languages/spring.svg",
+    "classification": "back"
+  },
+  {
+    "id": 10,
+    "name": "Go",
+    "image": "https://holaworld.io/images/languages/go.svg",
+    "classification": "back"
+  },
+  {
+    "id": 11,
+    "name": "Nestjs",
+    "image": "https://holaworld.io/images/languages/nestjs.svg",
+    "classification": "back"
+  },
+  {
+    "id": 12,
+    "name": "Kotlin",
+    "image": "https://holaworld.io/images/languages/kotlin.svg",
+    "classification": "back,mobile"
+  },
+  {
+    "id": 13,
+    "name": "Express",
+    "image": "https://holaworld.io/images/languages/express.svg",
+    "classification": "back"
+  },
+  {
+    "id": 14,
+    "name": "MySQL",
+    "image": "https://holaworld.io/images/languages/mysql.svg",
+    "classification": "back"
+  },
+  {
+    "id": 15,
+    "name": "MongoDB",
+    "image": "https://holaworld.io/images/languages/mongodb.svg",
+    "classification": "back"
+  },
+  {
+    "id": 16,
+    "name": "Python",
+    "image": "https://holaworld.io/images/languages/python.svg",
+    "classification": "back"
+  },
+  {
+    "id": 17,
+    "name": "Django",
+    "image": "https://holaworld.io/images/languages/django.svg",
+    "classification": "back"
+  },
+  {
+    "id": 18,
+    "name": "php",
+    "image": "https://holaworld.io/images/languages/php.svg",
+    "classification": "back"
+  },
+  {
+    "id": 19,
+    "name": "GraphQL",
+    "image": "https://holaworld.io/images/languages/graphql.svg",
+    "classification": "back"
+  },
+  {
+    "id": 20,
+    "name": "Firebase",
+    "image": "https://holaworld.io/images/languages/firebase.svg",
+    "classification": "back"
+  },
+  {
+    "id": 21,
+    "name": "Flutter",
+    "image": "https://holaworld.io/images/languages/flutter.svg",
+    "classification": "mobile"
+  },
+  {
+    "id": 22,
+    "name": "Swift",
+    "image": "https://holaworld.io/images/languages/swift.svg",
+    "classification": "mobile"
+  },
+  {
+    "id": 23,
+    "name": "ReactNative",
+    "image": "https://holaworld.io/images/languages/reactnative.svg",
+    "classification": "mobile"
+  },
+  {
+    "id": 24,
+    "name": "Unity",
+    "image": "https://holaworld.io/images/languages/unity.svg",
+    "classification": "mobile"
+  },
+  {
+    "id": 25,
+    "name": "AWS",
+    "image": "https://holaworld.io/images/languages/aws.svg",
+    "classification": "ect"
+  },
+  {
+    "id": 26,
+    "name": "Kubernetes",
+    "image": "https://holaworld.io/images/languages/kubernetes.svg",
+    "classification": "ect"
+  },
+  {
+    "id": 27,
+    "name": "Docker",
+    "image": "https://holaworld.io/images/languages/docker.svg",
+    "classification": "ect"
+  },
+  {
+    "id": 28,
+    "name": "Git",
+    "image": "https://holaworld.io/images/languages/git.svg",
+    "classification": "ect"
+  },
+  {
+    "id": 29,
+    "name": "Figma",
+    "image": "https://holaworld.io/images/languages/figma.svg",
+    "classification": "ect"
+  },
+  {
+    "id": 30,
+    "name": "Zeplin",
+    "image": "https://holaworld.io/images/languages/zeplin.svg",
+    "classification": "ect"
+  },
+  {
+    "id": 31,
+    "name": "Jest",
+    "image": "https://holaworld.io/images/languages/jest.svg",
+    "classification": "ect"
   }
 ]
