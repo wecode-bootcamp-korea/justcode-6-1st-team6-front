@@ -49,7 +49,7 @@ function Login() {
       email: email,
       password: pw,
     };
-    fetch('http://localhost:8000/user/login', {
+    fetch('http://localhost:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
