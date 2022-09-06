@@ -10,14 +10,13 @@
   .modal {
     position: absolute;
     width: 400px;
-
     height: 500px;
-
     background-color: #fff;
     // Modal 창 브라우저 가운데로 조정
     left: 50%;
     top: 50%;
     padding: 15px;
+    border-radius: 5px;
     transform: translate(-50%, -50%);
     z-index: 100;
 
@@ -43,6 +42,7 @@
       margin-bottom: 16px;
       overflow: scroll;
       border: 1px solid rgb(216, 215, 215);
+      border-radius: 5px;
       font-size: 14px;
       line-height: 17px;
     }
