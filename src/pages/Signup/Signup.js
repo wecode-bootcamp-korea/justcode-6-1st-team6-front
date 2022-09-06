@@ -91,9 +91,10 @@ function Signup() {
           <div>
             <input
               onChange={onChangeEmail}
-              className={css.textInput}
+              className={css.loginText}
               placeholder="Email 주소 입력 (@ 포함)"
             />
+            <button className={css.repetition}>중복확인</button>
 
             {emailError && (
               <div style={{ color: 'red', textAlign: 'center' }}>
