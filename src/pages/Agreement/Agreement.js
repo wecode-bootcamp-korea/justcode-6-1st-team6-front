@@ -98,7 +98,7 @@ function Agreement() {
 
           <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
-            <div className={`${css.allCheck} ${css.padding_10}`}>
+            <div className={`${css.allCheck} ${css.padding_15}`}>
               <input
                 type="checkbox"
                 checked={allCheck}
