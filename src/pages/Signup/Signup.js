@@ -57,19 +57,16 @@ function Signup() {
 
     // 쿼리스트링으로 회원가입 주소 입력하면 안됨. 현정님이랑 수정 예정
 
-    fetch(
-      'http://localhost:8000/user/signup?email=email@gmail.comr&nickname=닉네임&password=비밀번호',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      }
-    )
+    fetch('http://localhost:8000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
       .then(res => {
         if (res.status === 201) {
-          alert('회원가입이 완료되었습니다.');
+          alert('회원가입이 완료되었습니다. 로그인 해주세요.');
           navigate('/login');
         }
         if (res.status === 400) {
