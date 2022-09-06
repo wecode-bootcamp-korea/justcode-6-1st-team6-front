@@ -76,7 +76,6 @@ function Signup() {
           alert('이미 사용중인 이메일 입니다.');
         }
         // res.json();
-
       })
       .then(res => {});
   };
