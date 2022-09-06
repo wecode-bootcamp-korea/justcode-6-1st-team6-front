@@ -55,6 +55,11 @@ function Signup() {
       password: password,
     };
 
+<<<<<<< HEAD
+=======
+    // 쿼리스트링으로 회원가입 주소 입력하면 안됨. 현정님이랑 수정 예정
+
+>>>>>>> 3ec4abbe459afbd132683bda38b94f9e29731650
     fetch('http://localhost:8000/users/signup', {
       method: 'POST',
       headers: {
