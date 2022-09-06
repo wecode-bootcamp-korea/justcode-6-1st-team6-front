@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Edit.scss';
+import Select from 'react-select';
 
 function Edit({ userInfo, stack }) {
   const defaultValue = userInfo;
