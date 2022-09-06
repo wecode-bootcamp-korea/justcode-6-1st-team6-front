@@ -26,7 +26,7 @@ function Banner() {
           <img
             src={Slide1}
             alt="#!"
-            style={{ minWidth: '100vw', height: '400px', marginBottom: '15px' }}
+            style={{ maxWidth: '100vw', height: 'auto', marginBottom: '15px' }}
           />
         </h3>
       </div>
@@ -35,7 +35,7 @@ function Banner() {
           <img
             src={Slide2}
             alt="#!"
-            style={{ minWidth: '100vw', height: '400px', marginBottom: '15px' }}
+            style={{ maxWidth: '100vw', height: 'auto', marginBottom: '15px' }}
           />
         </h3>
       </div>
