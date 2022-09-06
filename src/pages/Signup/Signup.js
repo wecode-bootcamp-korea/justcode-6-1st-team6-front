@@ -43,7 +43,29 @@ function Signup() {
     },
     [password]
   );
-
+  //이메일 중복확인
+  const repetConfirm = () => {
+    const body = {
+      email: email,
+    };
+    fetch('http://localhost:8000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+      .then(res => {
+        if (res.status === 201) {
+          alert('사용가능한 이메일 입니다.');
+        }
+        if (res.status === 400) {
+          alert('이미 사용중인 이메일 입니다.');
+        }
+      })
+      .then(res => {});
+  };
+  //로그인 버튼
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
@@ -69,7 +91,7 @@ function Signup() {
           navigate('/login');
         }
         if (res.status === 400) {
-          alert('이미 사용중인 이메일 입니다.');
+          alert('이미 사용중인 이메일 입니다. 다른 이메일을 사용해주세요.');
         }
         // res.json();
       })
@@ -94,7 +116,9 @@ function Signup() {
               className={css.loginText}
               placeholder="Email 주소 입력 (@ 포함)"
             />
-            <button className={css.repetition}>중복확인</button>
+            <button onClick={repetConfirm} className={css.repetition}>
+              중복확인
+            </button>
 
             {emailError && (
               <div style={{ color: 'red', textAlign: 'center' }}>
