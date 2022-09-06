@@ -12,7 +12,7 @@ function Comment() {
 
     const newComment = {
       comment_id: id,
-      profile: '/images/user.png',
+      profile: '/user_icon16.png',
       user: 'Kevin Ahn',
       created_at: '2023-05-28 11:27:33',
       comment,

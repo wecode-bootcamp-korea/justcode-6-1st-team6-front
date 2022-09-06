@@ -18,7 +18,19 @@ function Modal(props) {
       />
       <div className={styles.Modal}>
         <div className={styles.modalWrapper}>
-          <div className={styles.modalWrap}>{props.children}</div>
+          <div className={styles.modalWrap}>
+            <div className={styles.modalDelete}>
+              <p>{text}</p>
+              <div className={styles.modalButton}>
+                <button className={styles.cancelButton} onClick={onClose}>
+                  {cancelText}
+                </button>
+                <button className={styles.deleteButton} onClick={onConfirm}>
+                  {confirmText}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

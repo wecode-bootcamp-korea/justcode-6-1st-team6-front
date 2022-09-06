@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
-import CommentModal from './CommentModal';
+import CommentModal from '../ModalComment/CommentModal';
 
 function NewComment({
   id,
