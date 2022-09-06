@@ -69,7 +69,7 @@ function Login() {
           localStorage.setItem('login-token', result.token);
           goToMain();
         } else {
-          alert('로그인 정보를 확인해 주시기 바랍니다.');
+          alert('로그인 정보가 일치하지 않습니다.');
         }
       });
   };

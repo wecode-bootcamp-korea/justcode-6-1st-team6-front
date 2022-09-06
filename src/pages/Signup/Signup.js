@@ -21,6 +21,7 @@ function Signup() {
     setEmail(e.target.value);
     setEmailError(!e.target.value.includes('@'));
   };
+
   //비밀번호 칸이랑 비밀번호 확인칸이랑 맞는지 확인하고 틀리면 아래 경고 메세지
   const onChangePassword = useCallback(
     e => {
