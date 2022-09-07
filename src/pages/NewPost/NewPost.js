@@ -60,7 +60,6 @@ function NewPost() {
       },
       body: JSON.stringify(body),
     })
-      .then(res => res.json())
       .then(res => {
         if (res.status === 201) {
           alert('게시글 작성이 완료되었습니다.');
@@ -68,7 +67,8 @@ function NewPost() {
         } else {
           alert('내용을 다시 작성해주세요.');
         }
-      });
+      })
+      .then(res => {});
   };
   return (
     <div className="newPostContainer">
