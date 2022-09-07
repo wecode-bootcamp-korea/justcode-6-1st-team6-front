@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NewPost.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import NewPostSelect from './NewPostSelect';
 
 function NewPost() {
@@ -8,7 +8,8 @@ function NewPost() {
   const [contentValue, setContentValue] = useState('');
   const [skills, setSkills] = useState([]);
   const [selectOption, setOption] = useState({});
-
+  const navigate = useNavigate();
+  // const params = useParams();
   const getSelectValue = value => {
     setOption(selectOption => ({ ...selectOption, ...value }));
   };
@@ -21,14 +22,13 @@ function NewPost() {
   };
 
   useEffect(() => {
-    fetch('../data/skills.json')
+    fetch('http://localhost:8000/skills')
       .then(res => res.json())
-      .then(skills => {
-        setSkills(skills);
+      .then(res => {
+        setSkills(res.stacks);
       });
   }, []);
-
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = event => {
     event.preventDefault();
     const body = {
       ...selectOption,
@@ -44,7 +44,14 @@ function NewPost() {
       },
       body: JSON.stringify(body),
     })
-      .then(res => res.json())
+      .then(res => {
+        if (res.status === 201) {
+          alert('게시글 작성이 완료되었습니다.');
+          navigate('/my-list');
+        } else {
+          alert('내용을 다시 작성해주세요.');
+        }
+      })
       .then(res => {});
   };
   return (
