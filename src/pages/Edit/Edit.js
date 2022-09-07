@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Edit.scss';
 
 function Edit({ userInfo, stack, userStack }) {
   const defaultValue = userInfo;
   const [selectStack, setSelect] = useState(null);
   const [nickName, setNickName] = useState();
-
+  const navigate = useNavigate();
   const selectChange = e => {
     setSelect(e.target.value);
   };
   const getValue = e => {
     setNickName(e.target.value);
   };
-  const editSubmit = () => {
+  const editSubmit = event => {
+    event.preventDefault();
     const body = {
       nickname: nickName,
       stacks: selectStack,
@@ -26,7 +28,14 @@ function Edit({ userInfo, stack, userStack }) {
       },
       body: JSON.stringify(body),
     })
-      .then(res => res.json())
+      .then(res => {
+        if (res.status === 200) {
+          alert('수정이 완료되었습니다.');
+          navigate('/edit');
+        } else {
+          alert('내용을 다시 작성해주세요.');
+        }
+      })
       .then(res => {});
   };
 
