@@ -41,6 +41,26 @@
   border-bottom: 2px solid black;
   outline: none;
 }
+.loginText {
+  width: 220px;
+  height: 25px;
+  margin-right: 7px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+.repetition {
+  width: 75px;
+  height: 28px;
+  border: none;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
 
 // .checkBox {
 //   margin-top: 20px;
