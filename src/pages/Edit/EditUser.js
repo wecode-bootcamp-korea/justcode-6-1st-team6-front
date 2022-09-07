@@ -25,7 +25,6 @@ function EditUser() {
         setUserStack(res.user[0].stack);
       });
   }, []);
-  console.log('부모2', userStacks);
 
   return <Edit stack={stack} userInfo={userInfo} userStacks={userStacks} />;
 }
