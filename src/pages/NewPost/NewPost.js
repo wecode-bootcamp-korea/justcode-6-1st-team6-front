@@ -21,21 +21,6 @@ function NewPost() {
     setContentValue(e.currentTarget.value);
   };
 
-  // const none = null;
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/skills?category=${none}`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(skills => {
-  //       setSkills(skills);
-  //     });
-  // }, []);
-  // console.log('스킬', skills);
-
   useEffect(() => {
     fetch('http://localhost:8000/skills')
       .then(res => res.json())
