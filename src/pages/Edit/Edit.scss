@@ -86,4 +86,10 @@
       color: #fff;
     }
   }
+  .width_60 {
+    width: 60%;
+    &:focus {
+      outline: none;
+    }
+  }
 }
