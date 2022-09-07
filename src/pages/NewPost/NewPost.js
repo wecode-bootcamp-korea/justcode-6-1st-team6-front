@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NewPost.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import NewPostSelect from './NewPostSelect';
 
 function NewPost() {
@@ -8,7 +8,8 @@ function NewPost() {
   const [contentValue, setContentValue] = useState('');
   const [skills, setSkills] = useState([]);
   const [selectOption, setOption] = useState({});
-
+  const navigate = useNavigate();
+  // const params = useParams();
   const getSelectValue = value => {
     setOption(selectOption => ({ ...selectOption, ...value }));
   };
@@ -19,6 +20,21 @@ function NewPost() {
   const getContentValue = e => {
     setContentValue(e.currentTarget.value);
   };
+
+  // const none = null;
+  // useEffect(() => {
+  //   fetch(`http://localhost:8000/skills?category=${none}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(skills => {
+  //       setSkills(skills);
+  //     });
+  // }, []);
+  // console.log('스킬', skills);
 
   useEffect(() => {
     fetch('../mock/post/skills.json')
@@ -46,7 +62,12 @@ function NewPost() {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        if (res.status === 201) {
+          alert('게시글 작성이 완료되었습니다.');
+          navigate('/my-list');
+        } else {
+          alert('내용을 다시 작성해주세요.');
+        }
       });
   };
   return (
