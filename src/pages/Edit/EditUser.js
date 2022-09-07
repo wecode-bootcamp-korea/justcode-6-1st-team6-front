@@ -27,11 +27,17 @@ function EditUser() {
   // }, []);
 
   useEffect(() => {
-    fetch('localhost:8000/users')
+    fetch('http://localhost:8000/users', {
+      method: 'GET',
+      header: {
+        token: localStorage.getItem('login-token'),
+        'Content-type': 'application/json',
+      },
+    })
       .then(res => res.json())
       .then(res => {
-        setUser(res.user[0].nickname);
-        setUserStack(res.user[0].stack);
+        setUser(res);
+        setUserStack(res.user);
       });
   }, []);
   // useEffect(() => {
