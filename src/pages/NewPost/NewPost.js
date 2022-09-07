@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './NewPost.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NewPostSelect from './NewPostSelect';
 
 function NewPost() {
@@ -9,7 +9,6 @@ function NewPost() {
   const [skills, setSkills] = useState([]);
   const [selectOption, setOption] = useState({});
   const navigate = useNavigate();
-  // const params = useParams();
   const getSelectValue = value => {
     setOption(selectOption => ({ ...selectOption, ...value }));
   };
