@@ -1,15 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './Edit.scss';
-import Select from 'react-select';
 
 function Edit({ userInfo, stack, userStacks }) {
   const defaultValue = userInfo;
   const [selectStack, setSelect] = useState(null);
   const [nickName, setNickName] = useState();
-  // const selectedValue = useRef();
-  // const options = stack.map(data => {
-  //   return { key: data.id, value: data.id, label: data.name };
-  // });
 
   console.log('위', selectStack);
   console.log('위2', userStacks[1]);
@@ -17,9 +12,6 @@ function Edit({ userInfo, stack, userStacks }) {
   const selectChange = e => {
     setSelect(e.target.value);
   };
-  // const selectChange = () => {
-  //   return selectedValue;
-  // };
   const getValue = e => {
     setNickName(e.target.value);
   };
@@ -76,15 +68,6 @@ function Edit({ userInfo, stack, userStacks }) {
                   );
                 })}
               </select>
-              {/* <Select
-                selectValue={selectedValue}
-                options={options}
-                onChange={selectChange}
-                isOptionSelected
-                defaultValue={(1, 2)}
-                isMulti
-                className="width_60"
-              /> */}
             </div>
             <span>관심 있는 기술 태그를 등록해주세요.</span>
           </div>
