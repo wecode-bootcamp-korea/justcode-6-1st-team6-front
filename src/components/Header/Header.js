@@ -9,7 +9,7 @@ function Header() {
   const [alert, setAlert] = useState(false);
 
   const navData = [
-    { link: '/mylist', content: '내 작성글', login: false },
+    { link: '/my-list', content: '내 작성글', login: false },
     { link: '/edit', content: '설정', login: false },
     { link: '/', content: '로그아웃', login: true },
   ];
