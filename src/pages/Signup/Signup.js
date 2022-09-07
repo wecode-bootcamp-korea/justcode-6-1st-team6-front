@@ -30,7 +30,7 @@ function Signup() {
     },
     [passwordCheck]
   );
-  //아이디에 하나 이상 들어가는지 확인
+  //닉네임에 하나 이상 들어가는지 확인
   const onChangeNick = useCallback(e => {
     setNickName(e.target.value);
     setNickError(e.target.value.length >= 1);
@@ -65,7 +65,7 @@ function Signup() {
       })
       .then(res => {});
   };
-  //로그인 버튼
+  //로그인으로 이동
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
@@ -155,6 +155,7 @@ function Signup() {
             &nbsp;하기
           </div>
           <button
+            disabled={!nickName}
             onClick={onSignupBtnClick}
             className={css.signupButton}
             style={{
