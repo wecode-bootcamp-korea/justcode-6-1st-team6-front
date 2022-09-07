@@ -94,12 +94,11 @@ function Agreement() {
     <div className={css.background}>
       <div className={css.container}>
         <div>
-
           <img className={css.textLogo} alt="로고" src={logo} />
 
           <h1>서비스 이용약관에 동의</h1>
           <div className={css.agreementBox}>
-            <div className={`${css.allCheck} ${css.padding_10}`}>
+            <div className={`${css.allCheck} ${css.padding_15}`}>
               <input
                 type="checkbox"
                 checked={allCheck}
@@ -127,10 +126,6 @@ function Agreement() {
               />
               &nbsp;만 14세 이상
               <span className={css.must}>&nbsp;(필수)</span>
-              <button className={css.nextButton} onClick={modalShow}>
-                <img className={css.nextIcon} src={nexticon} />
-              </button>
-              {modal && <Modal setModal={setModal}></Modal>}
             </div>
             <div className={css.agreeList}>
               <input

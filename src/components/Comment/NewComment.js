@@ -33,17 +33,13 @@ function NewComment({
               className={styles.commentModify}
               onClick={() => {
                 if (modify) {
-                  // console.log('a');
                   setModify(false);
                   setText('');
                   modifyComment(id, { comment: text });
-                  // console.log('b');
                   return;
                 }
-                // console.log('c');
                 setText(comment);
                 setModify(true);
-                // console.log('d');
               }}
             >
               {modify ? '저장' : '수정'}
@@ -61,7 +57,7 @@ function NewComment({
         {modify ? (
           <textarea
             type="text"
-            value={text}
+            value={text || ''}
             className={styles.commentInput}
             placeholder="댓글을 입력하세요."
             onChange={event => {

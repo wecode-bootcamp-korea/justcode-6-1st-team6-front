@@ -4,19 +4,24 @@ import styles from './Post.module.scss';
 import Comment from '../../components/Comment/Comment';
 import Modal from '../../components/ModalPost/Modal';
 
+import profile from '../../assets/images/user_icon16.png';
 import arrow from '../../assets/svg/arrow.svg';
 
-function PostModal() {
+const LOGIN_TOKEN = 'login-token';
+
+function Post() {
   const navigate = useNavigate();
   const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [postModal, setPostModal] = useState(false);
 
+  //게시글 GET
   useEffect(() => {
-    fetch('/mock/post/post.json')
+    fetch(`http://localhost:8000/posts/${postId}`)
       .then(res => res.json())
       .then(data => {
-        setPost(data.postData);
+        // console.log(data);
+        setPost(data.post[0]);
       });
   }, [postId]);
 
@@ -39,7 +44,7 @@ function PostModal() {
             <h1>{post.title}</h1>
           </div>
           <div className={styles.postUser}>
-            <img className={styles.profileImage} src={post.profile_image} />
+            <img className={styles.profileImage} src={profile} />
             <span className={styles.user}>{post.nickname}</span>
             <span className={styles.date}>{post.create_at}</span>
           </div>
@@ -115,20 +120,41 @@ function PostModal() {
           onClose={() => {
             setPostModal(false);
           }}
-          onConfirm={async () => {
-            if (!postId) return;
+          onConfirm={
+            // async
+            () => {
+              if (!postId) return;
 
-            // const resp = await fetch(`/url/${postId}`, {
-            //   method: 'DELETE',
-            //   headers: {
-            //     token: localStorage.getItem('login-token'),
-            //     'Content-type': 'application/json',
-            //   },
-            // });
-            // const data = await resp.json();
-            navigate(-1);
-            setPostModal(false);
-          }}
+              const token = localStorage.getItem(LOGIN_TOKEN);
+
+              fetch(`http://localhost:8000/comment/${postId}`, {
+                method: 'DELETE',
+                headers: {
+                  token: token,
+                  'Content-type': 'application/json',
+                },
+              })
+                .then(res => res.json())
+                .then(
+                  res => console.log(res)
+                  // navigate(-1)
+                );
+
+              // const resp = await fetch(
+              //   `http://localhost:8000/comment/${postId}`,
+              //   {
+              //     method: 'DELETE',
+              //     headers: {
+              //       token: localStorage.getItem('login-token'),
+              //       'Content-type': 'application/json',
+              //     },
+              //   }
+              // );
+              // const data = await resp.json();
+              // navigate(-1);
+              setPostModal(false);
+            }
+          }
         />
         <Comment />
       </div>
@@ -136,4 +162,4 @@ function PostModal() {
   );
 }
 
-export default PostModal;
+export default Post;
