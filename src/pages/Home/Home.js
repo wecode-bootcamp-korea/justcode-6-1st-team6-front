@@ -9,6 +9,7 @@ import SkillList from '../../components/SkillList/SkillList';
 import SkillListCategory from '../../components/SkillList/SkillListCategory';
 import SkillListContainer from '../../components/SkillList/SkillListContainer';
 import SkillListFiltered from '../../components/SkillList/SkillListFiltered';
+import { BASE_URL } from '../../config';
 
 import styles from './Home.module.scss';
 
@@ -38,6 +39,10 @@ function Home() {
       setSkillListFiltered(
         skillListFiltered.filter(el => el !== containedElement)
       );
+      if (skillListFiltered.length === 0) {
+        setPostCardList([]);
+        setPrevFilteredString('');
+      }
     } else {
       setSkillListFiltered(prev => [...prev, skill]);
     }
@@ -45,19 +50,29 @@ function Home() {
 
   const handleSkillListFilteredRemove = skill => {
     setSkillListFiltered(skillListFiltered.filter(prev => prev !== skill));
+    if (skillListFiltered.length === 0) {
+      setPostCardList([]);
+      setPrevFilteredString('');
+    }
   };
 
   const handleSkillListFilteredRemoveAll = () => {
     setSkillListFiltered([]);
+    setPrevFilteredString('');
+    setPostCardList([]);
   };
 
   useEffect(() => {
-    fetch(`/mock/main/skills-${skillsCategoryOption}.json`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      // `/mock/main/skills-${skillsCategoryOption}.json`, {
+      `${BASE_URL}/skills?category=${skillsCategoryOption}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then(res => res.json())
       .then(json => setSkillList(json.stacks));
   }, [skillsCategoryOption]);
@@ -81,18 +96,42 @@ function Home() {
     setSwitchOption(!switchOption);
   };
 
+  const [prevFilteredString, setPrevFilteredString] = useState('');
   const getPostCardList = useCallback(async () => {
+    const skillListFilteredString = skillListFiltered
+      .map(skill => {
+        return skill.id;
+      })
+      .join(',');
+
+    let isNewPostCardList = false;
+    if (prevFilteredString !== skillListFilteredString) {
+      setPage(1);
+      isNewPostCardList = true;
+    }
+
     setIsLoading(true);
-    await fetch(`/mock/main/postCardList${page}.json`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    await fetch(
+      // `/mock/main/postCardList${page}.json`, {
+      `${BASE_URL}/posts?page=${page}&limit=6&stacks=${skillListFilteredString}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then(res => res.json())
-      .then(json => setPostCardList(prev => [...prev, ...json.posts]));
+      .then(json => {
+        if (isNewPostCardList) {
+          setPostCardList(json.posts);
+        } else {
+          setPostCardList(prev => [...prev, ...json.posts]);
+        }
+        setPrevFilteredString(skillListFilteredString);
+      });
     setIsLoading(false);
-  }, [page]);
+  }, [page, prevFilteredString, skillListFiltered]);
 
   useEffect(() => {
     getPostCardList();
@@ -100,7 +139,8 @@ function Home() {
 
   useEffect(() => {
     // TODO: Mock 데이터의 한계로, 불러올 데이터가 없어서 발생할 수 있는 에러를 방지하기 위한 page 조건 삭제 필요
-    if (!isLoading && inView && page === 1) {
+    // if (!isLoading && inView && page === 1) {
+    if (!isLoading && inView) {
       setPage(prev => prev + 1);
     }
   }, [isLoading, inView]);
@@ -143,5 +183,14 @@ function Home() {
     </div>
   );
 }
+
+// function changeSkillsCategoryOptionToEng(opt) {
+//   if (opt === '인기') return 'popular';
+//   if (opt === '프론트엔드') return 'front';
+//   if (opt === '백엔드') return 'back';
+//   if (opt === '모바일') return 'mobile';
+//   if (opt === '기타') return 'ect';
+//   if (opt === '모두보기') return 'all';
+// }
 
 export default Home;
