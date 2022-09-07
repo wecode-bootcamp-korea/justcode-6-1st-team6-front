@@ -23,7 +23,7 @@
   align-items: right;
   border: none;
   margin-left: 10px;
-
+  cursor: pointer;
 }
 .nextIcon {
   margin-left: 10px;
@@ -57,6 +57,7 @@
   background-color: black;
   border: none;
   margin-top: 30px;
+  cursor: pointer;
 }
 .must {
   color: #d5b7f4;
@@ -65,7 +66,7 @@
 .agreeList {
   margin: 20px;
 }
-.padding_10 {
-  padding-top: 10px;
-  padding-bottom: 15px;
+.padding_15 {
+  padding-top: 15px;
+  padding-bottom: 20px;
 }

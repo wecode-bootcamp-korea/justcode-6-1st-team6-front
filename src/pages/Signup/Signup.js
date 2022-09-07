@@ -21,6 +21,7 @@ function Signup() {
     setEmail(e.target.value);
     setEmailError(!e.target.value.includes('@'));
   };
+
   //비밀번호 칸이랑 비밀번호 확인칸이랑 맞는지 확인하고 틀리면 아래 경고 메세지
   const onChangePassword = useCallback(
     e => {
@@ -29,7 +30,7 @@ function Signup() {
     },
     [passwordCheck]
   );
-  //아이디에 하나 이상 들어가는지 확인
+  //닉네임에 하나 이상 들어가는지 확인
   const onChangeNick = useCallback(e => {
     setNickName(e.target.value);
     setNickError(e.target.value.length >= 1);
@@ -42,7 +43,29 @@ function Signup() {
     },
     [password]
   );
-
+  //이메일 중복확인
+  const repetConfirm = () => {
+    const body = {
+      email: email,
+    };
+    fetch('http://localhost:8000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+      .then(res => {
+        if (res.status === 201) {
+          alert('사용가능한 이메일 입니다.');
+        }
+        if (res.status === 400) {
+          alert('이미 사용중인 이메일 입니다.');
+        }
+      })
+      .then(res => {});
+  };
+  //로그인으로 이동
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate('/login');
@@ -55,25 +78,20 @@ function Signup() {
       password: password,
     };
 
-    // 쿼리스트링으로 회원가입 주소 입력하면 안됨. 현정님이랑 수정 예정
-
-    fetch(
-      'http://localhost:8000/user/signup?email=email@gmail.comr&nickname=닉네임&password=비밀번호',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(body),
-      }
-    )
+    fetch('http://localhost:8000/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
       .then(res => {
         if (res.status === 201) {
-          alert('회원가입이 완료되었습니다.');
+          alert('회원가입이 완료되었습니다. 로그인 해주세요.');
           navigate('/login');
         }
         if (res.status === 400) {
-          alert('이미 사용중인 이메일 입니다.');
+          alert('이미 사용중인 이메일 입니다. 다른 이메일을 사용해주세요.');
         }
         // res.json();
       })
@@ -95,9 +113,13 @@ function Signup() {
           <div>
             <input
               onChange={onChangeEmail}
-              className={css.textInput}
+              className={css.loginText}
               placeholder="Email 주소 입력 (@ 포함)"
             />
+            <button onClick={repetConfirm} className={css.repetition}>
+              중복확인
+            </button>
+
             {emailError && (
               <div style={{ color: 'red', textAlign: 'center' }}>
                 이메일 양식을 확인하세요
@@ -133,6 +155,7 @@ function Signup() {
             &nbsp;하기
           </div>
           <button
+            disabled={!nickName}
             onClick={onSignupBtnClick}
             className={css.signupButton}
             style={{

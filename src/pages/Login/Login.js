@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import css from './Login.module.scss';
 import logo from '../../assets/images/logo2.png';
+import github_icon from '../../assets/images/github_icon.png';
+import kakao_icon from '../../assets/images/kakao_icon.png';
+import google_icon from '../../assets/images/google_icon.png';
 
 function Login() {
   const goToSignup = () => {
@@ -37,6 +40,9 @@ function Login() {
       setValid(false);
     }
   };
+  const subLoginAlert = () => {
+    alert('HALLO 계정으로 로그인해주시기 바랍니다.');
+  };
 
   // const onLoginBtnClick = () => {
   //   fetch('/mock/main/users.json')
@@ -49,7 +55,7 @@ function Login() {
       email: email,
       password: pw,
     };
-    fetch('http://localhost:8000/user/login', {
+    fetch('http://localhost:8000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -110,6 +116,26 @@ function Login() {
           <button className={css.ask} onClick={goToSignup}>
             이메일로 신규 회원가입
           </button>
+          <div className={css.iconContainer}>
+            <img
+              className={`${css.login_icon} ${css.boxShadow}`}
+              alt="구글"
+              src={google_icon}
+              onClick={subLoginAlert}
+            />
+            <img
+              className={css.login_icon}
+              alt="깃헙"
+              src={github_icon}
+              onClick={subLoginAlert}
+            />
+            <img
+              className={css.login_icon}
+              alt="카카오"
+              src={kakao_icon}
+              onClick={subLoginAlert}
+            />
+          </div>
         </div>
       </div>
     </div>
