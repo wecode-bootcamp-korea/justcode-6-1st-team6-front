@@ -20,7 +20,6 @@ function Post() {
     fetch(`http://localhost:8000/posts/${postId}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         setPost(data.post[0]);
       });
   }, [postId]);
@@ -44,7 +43,7 @@ function Post() {
             <h1>{post.title}</h1>
           </div>
           <div className={styles.postUser}>
-            <img className={styles.profileImage} src={profile} />
+            <img className={styles.profileImage} src={profile} alt="프로필" />
             <span className={styles.user}>{post.nickname}</span>
             <span className={styles.date}>{post.create_at}</span>
           </div>
@@ -95,7 +94,11 @@ function Post() {
               <li>
                 <p className={styles.infoTitle}>사용 언어</p>
                 <p className={styles.infoContent}>
-                  <img src={post.stack} />
+                  <img
+                    src={post.stack[0].stack_image}
+                    alt={post.stack[0].stack_name}
+                    width="36px"
+                  />
                 </p>
               </li>
             </ul>
@@ -114,47 +117,29 @@ function Post() {
 
         <Modal
           visible={postModal}
-          text={'작성하신 글을 삭제하시겠어요?'}
-          cancelText={'아니요'}
-          confirmText={'네, 삭제할래요'}
+          text="작성하신 글을 삭제하시겠어요?"
+          cancelText="아니요"
+          confirmText="네, 삭제할래요"
           onClose={() => {
             setPostModal(false);
           }}
-          onConfirm={
-            // async
-            () => {
-              if (!postId) return;
+          onConfirm={() => {
+            if (!postId) return;
 
-              const token = localStorage.getItem(LOGIN_TOKEN);
+            const token = localStorage.getItem(LOGIN_TOKEN);
 
-              fetch(`http://localhost:8000/comment/${postId}`, {
-                method: 'DELETE',
-                headers: {
-                  token: token,
-                  'Content-type': 'application/json',
-                },
-              })
-                .then(res => res.json())
-                .then(
-                  res => console.log(res)
-                  // navigate(-1)
-                );
-
-              // const resp = await fetch(
-              //   `http://localhost:8000/comment/${postId}`,
-              //   {
-              //     method: 'DELETE',
-              //     headers: {
-              //       token: localStorage.getItem('login-token'),
-              //       'Content-type': 'application/json',
-              //     },
-              //   }
-              // );
-              // const data = await resp.json();
-              // navigate(-1);
-              setPostModal(false);
-            }
-          }
+            fetch(`http://localhost:8000/posts/${postId}`, {
+              method: 'DELETE',
+              headers: {
+                token: token,
+                'Content-type': 'application/json',
+              },
+            })
+              .then(res => res.status)
+              .then(res => {
+                navigate('/');
+              });
+          }}
         />
         <Comment />
       </div>

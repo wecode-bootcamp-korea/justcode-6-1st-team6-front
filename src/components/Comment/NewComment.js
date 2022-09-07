@@ -35,7 +35,7 @@ function NewComment({
                 if (modify) {
                   setModify(false);
                   setText('');
-                  modifyComment(id, { comment: text });
+                  modifyComment(id, { comment: text, user: user });
                   return;
                 }
                 setText(comment);
@@ -71,6 +71,7 @@ function NewComment({
       {commentModal === true ? (
         <CommentModal
           id={id}
+          user={user}
           commentModal={commentModal}
           setCommentModal={setCommentModal}
           deleteComment={deleteComment}

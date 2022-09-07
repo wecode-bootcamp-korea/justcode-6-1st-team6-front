@@ -9,9 +9,26 @@ const LOGIN_TOKEN = 'login-token';
 
 function Comment() {
   const { postId } = useParams();
+  const [userInfo, setUser] = useState();
   const [comment, setComment] = useState('');
-  const [id, setId] = useState(1);
+  // const [id, setId] = useState(1);
   const [commentArray, setCommentArray] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem(LOGIN_TOKEN);
+
+    fetch('http://localhost:8000/users', {
+      method: 'GET',
+      headers: {
+        token: token,
+        'Content-type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        setUser(res.user[0].nickname);
+      });
+  }, []);
 
   // 댓글 POST 부분
   const addComment = () => {
@@ -36,13 +53,13 @@ function Comment() {
     })
       .then(res => res.json())
       .then(res => {
-        setCommentArray([...commentArray, res]);
+        loader();
       });
     setComment('');
   };
 
   // 댓글 DEL부분
-  const deleteComment = id => {
+  const deleteComment = (id, user) => {
     const token = localStorage.getItem(LOGIN_TOKEN);
 
     if (!token) {
@@ -50,8 +67,11 @@ function Comment() {
       return;
     }
 
-    console.log(id);
-    console.log(token);
+    if (userInfo !== user) {
+      alert('not user');
+      return;
+    }
+
     fetch(`http://localhost:8000/comment/${id}`, {
       method: 'DELETE',
       headers: {
@@ -61,11 +81,8 @@ function Comment() {
     })
       .then(res => res.status)
       .then(data => {
-        if (data !== 204) {
-          alert('댓글 작성자가 아닙니다');
-        }
+        loader();
       });
-    // setCommentArray(commentArray.filter(item => item.id !== id));
   };
 
   // 댓글 PATCH 부분
@@ -77,10 +94,10 @@ function Comment() {
       return;
     }
 
-    // if () {
-    //   alert('댓글 작성자가 아닙니다');
-    //   return;
-    // }
+    if (userInfo !== body.user) {
+      alert('not user');
+      return;
+    }
 
     fetch(`http://localhost:8000/comment/${id}`, {
       method: 'PATCH',
@@ -94,37 +111,22 @@ function Comment() {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
-        // setCommentArray(res);
+        loader();
       });
-
-    // const originComment = commentArray.find(item => item.id === id);
-    // if (!originComment) return;
-
-    // const updateComment = {
-    //   ...originComment,
-    //   comment: body.comment,
-    // };
-
-    //서버 연결 시에 제거
-    // const updateCommentList = commentArray.map(item => {
-    //   if (item.id === id) {
-    //     return updateComment;
-    //   }
-    //   return item;
-    // });
-
-    // setCommentArray(updateCommentList);
   };
 
   //댓글 GET
-  useEffect(() => {
+  const loader = () => {
     fetch(`http://localhost:8000/comment/${postId}`)
       .then(res => res.json())
       .then(data => {
-        setCommentArray(data.comments);
+        setCommentArray(data?.comments ?? []);
       });
-  });
+  };
+
+  useEffect(() => {
+    loader();
+  }, []);
 
   return (
     <div className={styles.comment}>
