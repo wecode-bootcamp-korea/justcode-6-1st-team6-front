@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useRef, useState } from 'react';
 import Banner from '../../components/Banner/Banner';
 import BannerContainer from '../../components/Banner/BannerContainer';
 import PostCardList from '../../components/PostCardList/PostCardList';
@@ -9,6 +8,7 @@ import SkillList from '../../components/SkillList/SkillList';
 import SkillListCategory from '../../components/SkillList/SkillListCategory';
 import SkillListContainer from '../../components/SkillList/SkillListContainer';
 import SkillListFiltered from '../../components/SkillList/SkillListFiltered';
+import { BASE_URL } from '../../config';
 
 import styles from './Home.module.scss';
 
@@ -52,7 +52,7 @@ function Home() {
   };
 
   useEffect(() => {
-    fetch(`/mock/main/skills-${skillsCategoryOption}.json`, {
+    fetch(`${BASE_URL}/skills?category=${skillsCategoryOption}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -64,9 +64,8 @@ function Home() {
 
   /**************** PostCardListCategory ****************/
 
-  const [ref, inView] = useInView();
+  const ref = useRef();
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
   const [postCardList, setPostCardList] = useState([]);
 
   // 전체 / 프로젝트 / 스터디
@@ -81,29 +80,46 @@ function Home() {
     setSwitchOption(!switchOption);
   };
 
-  const getPostCardList = useCallback(async () => {
-    setIsLoading(true);
-    await fetch(`/mock/main/postCardList${page}.json`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+  function getPostCardList(page, skillListFiltered) {
+    const skillListFilteredString = skillListFiltered
+      .map(skill => skill.id)
+      .join(',');
+
+    return fetch(
+      `${BASE_URL}/posts?page=${page}&limit=6&stacks=${skillListFilteredString}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then(res => res.json())
-      .then(json => setPostCardList(prev => [...prev, ...json.posts]));
-    setIsLoading(false);
-  }, [page]);
+      .then(json => json.posts);
+  }
 
   useEffect(() => {
-    getPostCardList();
-  }, [getPostCardList]);
+    (async () => {
+      const data = await getPostCardList(1, skillListFiltered);
+      setPage(1);
+      setPostCardList(data);
+    })();
+  }, [skillListFiltered]);
 
   useEffect(() => {
-    // TODO: Mock 데이터의 한계로, 불러올 데이터가 없어서 발생할 수 있는 에러를 방지하기 위한 page 조건 삭제 필요
-    if (!isLoading && inView && page === 1) {
+    const cb = async () => {
+      const data = await getPostCardList(page + 1, skillListFiltered);
       setPage(prev => prev + 1);
-    }
-  }, [isLoading, inView]);
+      setPostCardList(prev => [...prev, ...data]);
+    };
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        cb();
+      }
+    });
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref, page, skillListFiltered]);
 
   return (
     <div className={styles.container}>
@@ -138,7 +154,7 @@ function Home() {
           categoryOption={categoryOption}
           switchOption={switchOption}
         />
-        <div ref={ref} />
+        <div className="observer" ref={ref} />
       </PostCardListContainer>
     </div>
   );
