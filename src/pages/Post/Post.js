@@ -128,6 +128,7 @@ function Post() {
 
             const token = localStorage.getItem(LOGIN_TOKEN);
 
+            //게시글 DELETE
             fetch(`http://localhost:8000/posts/${postId}`, {
               method: 'DELETE',
               headers: {
