@@ -11,6 +11,7 @@ function EditUser() {
   const [stack, setStack] = useState([]);
   console.log('유저스택', stack);
   console.log('유저이름', userInfo);
+
   useEffect(() => {
     fetch('http://localhost:8000/skills')
       .then(res => res.json())
@@ -36,8 +37,8 @@ function EditUser() {
     })
       .then(res => res.json())
       .then(res => {
-        setUser(res);
-        setUserStack(res.user);
+        setUser(res.user.nickname);
+        setUserStack(res.user.stack);
       });
   }, []);
   // useEffect(() => {
