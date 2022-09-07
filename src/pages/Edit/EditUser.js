@@ -9,22 +9,39 @@ function EditUser() {
     return data.stack_id;
   });
   const [stack, setStack] = useState([]);
-
+  console.log('유저스택', stack);
+  console.log('유저이름', userInfo);
   useEffect(() => {
-    fetch('./mock/post/skills.json')
+    fetch('http://localhost:8000/skills')
       .then(res => res.json())
       .then(res => {
-        setStack(res);
+        setStack(res.stacks);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch('./mock/post/skills.json')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setStack(res);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch('./mock/editUser/user.json')
+    fetch('localhost:8000/users')
       .then(res => res.json())
       .then(res => {
         setUser(res.user[0].nickname);
         setUserStack(res.user[0].stack);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch('./mock/editUser/user.json')
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setUser(res.user[0].nickname);
+  //       setUserStack(res.user[0].stack);
+  //     });
+  // }, []);
 
   return <Edit stack={stack} userInfo={userInfo} userStacks={userStacks} />;
 }
