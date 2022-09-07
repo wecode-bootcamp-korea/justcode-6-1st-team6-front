@@ -5,12 +5,7 @@ import Edit from './Edit';
 function EditUser() {
   const [userInfo, setUser] = useState();
   const [userStack, setUserStack] = useState([]);
-  const userStacks = userStack.map(data => {
-    return data.stack_id;
-  });
   const [stack, setStack] = useState([]);
-  console.log('유저스택', stack);
-  console.log('유저이름', userInfo);
 
   useEffect(() => {
     fetch('http://localhost:8000/skills')
@@ -30,15 +25,15 @@ function EditUser() {
   useEffect(() => {
     fetch('http://localhost:8000/users', {
       method: 'GET',
-      header: {
+      headers: {
         token: localStorage.getItem('login-token'),
         'Content-type': 'application/json',
       },
     })
       .then(res => res.json())
       .then(res => {
-        setUser(res.user.nickname);
-        setUserStack(res.user.stack);
+        setUser(res.user[0].nickname);
+        setUserStack(res.user[0].stack[0].stack_id);
       });
   }, []);
   // useEffect(() => {
@@ -50,7 +45,7 @@ function EditUser() {
   //     });
   // }, []);
 
-  return <Edit stack={stack} userInfo={userInfo} userStacks={userStacks} />;
+  return <Edit stack={stack} userInfo={userInfo} userStacks={userStack} />;
 }
 
 export default EditUser;

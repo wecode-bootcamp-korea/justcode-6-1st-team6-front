@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import './Edit.scss';
 
-function Edit({ userInfo, stack, userStacks }) {
+function Edit({ userInfo, stack, userStack }) {
   const defaultValue = userInfo;
   const [selectStack, setSelect] = useState(null);
   const [nickName, setNickName] = useState();
-
-  console.log('위', selectStack);
-  console.log('위2', userStacks[1]);
 
   const selectChange = e => {
     setSelect(e.target.value);
@@ -55,14 +52,10 @@ function Edit({ userInfo, stack, userStacks }) {
           <div className="interestTag borderBottom">
             <div className="inputGroup">
               <h3>관심 기술 태그</h3>
-              <select onChange={selectChange} defaultValue={userStacks[2]}>
+              <select onChange={selectChange} defaultValue={userStack}>
                 {stack.map(data => {
                   return (
-                    <option
-                      key={data.id}
-                      value={data.id}
-                      selected={data.id === userStacks[0] && 'selected'}
-                    >
+                    <option key={data.id} value={data.id}>
                       {data.name}
                     </option>
                   );
