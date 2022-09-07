@@ -1,0 +1,26 @@
+{
+  "user": [
+    {
+      "user_id": 9,
+      "nickname": "test",
+      "profile_image": "url",
+      "stack": [
+        {
+          "stack_id": 1,
+          "stack_name": "JavaScript",
+          "stack_image": "https://holaworld.io/images/languages/javascript.svg"
+        },
+        {
+          "stack_id": 2,
+          "stack_name": "TypeScript",
+          "stack_image": "https://holaworld.io/images/languages/typescript.svg"
+        },
+        {
+          "stack_id": 3,
+          "stack_name": "React",
+          "stack_image": "https://holaworld.io/images/languages/react.svg"
+        }
+      ]
+    }
+  ]
+}

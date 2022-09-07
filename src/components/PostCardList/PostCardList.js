@@ -17,7 +17,7 @@ function PostCardList(props) {
         postCardList.map(postCard => {
           let condition = getCondition(categoryOption);
           return switchOption
-            ? !postCard.is_closed &&
+            ? postCard.is_closed === 'false' &&
                 postCard.classification.includes(condition) && (
                   <PostCard key={postCard.post_id} data={postCard} />
                 )

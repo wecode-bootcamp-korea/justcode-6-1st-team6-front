@@ -33,7 +33,7 @@ h1 {
   align-items: center;
   justify-content: center;
   margin: auto;
-  padding-top: 130px;
+  padding-top: 100px;
   height: 100%;
   width: 50%;
   background-color: white;
@@ -57,7 +57,7 @@ h1 {
   color: white;
   background-color: black;
   margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   border: none;
   cursor: pointer;
 }
@@ -69,7 +69,6 @@ h1 {
   width: 310px;
   height: 35px;
   background-color: white;
-  margin-bottom: 60px;
   border: 1px solid gray;
   color: rgb(87, 89, 91);
   cursor: pointer;
@@ -77,4 +76,19 @@ h1 {
 .click {
   color: #9a4aeb;
   cursor: pointer;
+}
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.boxShadow {
+  box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.login_icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  margin-left: 10px;
 }
