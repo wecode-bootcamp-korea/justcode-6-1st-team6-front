@@ -37,13 +37,12 @@ function NewPost() {
   // console.log('스킬', skills);
 
   useEffect(() => {
-    fetch('../mock/post/skills.json')
+    fetch('http://localhost:8000/skills')
       .then(res => res.json())
-      .then(skills => {
-        setSkills(skills);
+      .then(res => {
+        setSkills(res.stacks);
       });
   }, []);
-
   const handleSubmit = event => {
     event.preventDefault();
     const body = {
