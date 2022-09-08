@@ -3,6 +3,7 @@ import styles from './ModalDeleteComment.module.scss';
 
 function ModalDeleteComment({
   id,
+  user,
   commentModal,
   setCommentModal,
   deleteComment,
@@ -24,7 +25,7 @@ function ModalDeleteComment({
             <button
               className={styles.deleteButton}
               onClick={() => {
-                deleteComment(id);
+                deleteComment(id, user);
               }}
             >
               네, 삭제할래요

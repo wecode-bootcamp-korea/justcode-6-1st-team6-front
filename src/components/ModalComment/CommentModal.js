@@ -2,7 +2,13 @@ import React from 'react';
 import styles from './CommentModal.module.scss';
 import ModalDeleteComment from './ModalDeleteComment';
 
-function CommentModal({ id, commentModal, setCommentModal, deleteComment }) {
+function CommentModal({
+  id,
+  user,
+  commentModal,
+  setCommentModal,
+  deleteComment,
+}) {
   return (
     <div>
       <div
@@ -19,6 +25,7 @@ function CommentModal({ id, commentModal, setCommentModal, deleteComment }) {
         <div className={styles.modalWrap}>
           <ModalDeleteComment
             id={id}
+            user={user}
             commentModal={commentModal}
             setCommentModal={setCommentModal}
             deleteComment={deleteComment}

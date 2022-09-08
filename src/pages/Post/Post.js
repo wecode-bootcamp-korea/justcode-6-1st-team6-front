@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Post.module.scss';
-import Comment from '../Comment/Comment';
-// import Modal from './Modal';
+import Comment from '../../components/Comment/Comment';
+import Modal from '../../components/ModalPost/Modal';
+
+import profile from '../../assets/images/user_icon16.png';
+import arrow from '../../assets/svg/arrow.svg';
+
+const LOGIN_TOKEN = 'login-token';
 
 function Post() {
   const navigate = useNavigate();
-  const [post, setPost] = useState({});
+  const { postId } = useParams();
+  const [post, setPost] = useState(null);
+  const [postModal, setPostModal] = useState(false);
 
+  //게시글 GET
   useEffect(() => {
-    fetch('/mock/post/post.json')
+    fetch(`http://localhost:8000/posts/${postId}`)
       .then(res => res.json())
       .then(data => {
-        setPost(data.postData);
+        setPost(data.post[0]);
       });
-  }, []);
+  }, [postId]);
+
+  if (!post) return null;
 
   return (
     <div className={styles.container}>
@@ -26,30 +36,29 @@ function Post() {
                 navigate(-1);
               }}
             >
-              <img
-                alt="뒤로가기"
-                src="/images/arrow.png"
-                width="30px"
-                height="30px"
-              />
+              <img alt="뒤로가기" src={arrow} width="30px" height="30px" />
             </button>
           </div>
           <div className={styles.postTitle}>
             <h1>{post.title}</h1>
           </div>
           <div className={styles.postUser}>
-            <img className={styles.profileImage} src={post.profile_image} />
+            <img className={styles.profileImage} src={profile} alt="프로필" />
             <span className={styles.user}>{post.nickname}</span>
             <span className={styles.date}>{post.create_at}</span>
           </div>
           <div className={styles.postOperationButton}>
-            <button className={styles.operationButton}>마감</button>
-            <button className={styles.operationButton}>수정</button>
             <button
               className={styles.operationButton}
-              // onClick={() => {
-              //   console.log('삭제', 1);
-              // }}
+              onClick={() => {
+                navigate(`/newpost?postId=${postId}&mode=update`);
+              }}
+            >
+              수정
+            </button>
+            <button
+              className={styles.operationButton}
+              onClick={() => setPostModal(true)}
             >
               삭제
             </button>
@@ -85,7 +94,11 @@ function Post() {
               <li>
                 <p className={styles.infoTitle}>사용 언어</p>
                 <p className={styles.infoContent}>
-                  <img src={post.stack} />
+                  <img
+                    src={post.stack[0].stack_image}
+                    alt={post.stack[0].stack_name}
+                    width="36px"
+                  />
                 </p>
               </li>
             </ul>
@@ -101,6 +114,34 @@ function Post() {
             </div>
           </div>
         </div>
+
+        <Modal
+          visible={postModal}
+          text="작성하신 글을 삭제하시겠어요?"
+          cancelText="아니요"
+          confirmText="네, 삭제할래요"
+          onClose={() => {
+            setPostModal(false);
+          }}
+          onConfirm={() => {
+            if (!postId) return;
+
+            const token = localStorage.getItem(LOGIN_TOKEN);
+
+            //게시글 DELETE
+            fetch(`http://localhost:8000/posts/${postId}`, {
+              method: 'DELETE',
+              headers: {
+                token: token,
+                'Content-type': 'application/json',
+              },
+            })
+              .then(res => res.status)
+              .then(res => {
+                navigate('/');
+              });
+          }}
+        />
         <Comment />
       </div>
     </div>

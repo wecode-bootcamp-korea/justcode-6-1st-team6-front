@@ -2,28 +2,28 @@
   "commentData": [
     {
       "comment_id": 10,
-      "profile": "/images/user.png",
+      "profile": "/user_icon16.png",
       "user": "발표하는수철",
       "created_at": "2023-05-28 11:22:33",
       "comment": "제가 병원에 입원하는 한이 있더라도 제가 꼭 발표자를 맡고 싶어요!!!!"
     },
     {
       "comment_id": 11,
-      "profile": "/images/user.png",
+      "profile": "/user_icon16.png",
       "user": "발표왕수철",
       "created_at": "2023-05-28 11:22:33",
       "comment": "비가오거나 눈이오더라도...제가 꼭 발표를 해야겠어요..."
     },
     {
       "comment_id": 12,
-      "profile": "/images/user.png",
+      "profile": "/user_icon16.png",
       "user": "발표하는수철",
       "created_at": "2023-05-28 11:22:33",
       "comment": "저 꼭 프로젝트 껴주세요 발표하려고요"
     },
     {
       "comment_id": 13,
-      "profile": "/images/user.png",
+      "profile": "/user_icon16.png",
       "user": "죽을거같아요",
       "created_at": "2023-05-28 11:22:33",
       "comment": "너무 힘들어요.........."

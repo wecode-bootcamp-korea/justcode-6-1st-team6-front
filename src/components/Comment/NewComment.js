@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
-import CommentModal from './CommentModal';
-import commentStyles from './Comment.module.scss';
+import CommentModal from '../ModalComment/CommentModal';
 
 function NewComment({
   id,
@@ -29,22 +28,19 @@ function NewComment({
               <span className={styles.commentDate}>{created_at}</span>
             </div>
           </div>
+          //사용자 정보 비교 후 노출되게 하기
           <div className={styles.commentChangeBtn}>
             <button
               className={styles.commentModify}
               onClick={() => {
                 if (modify) {
-                  // console.log('a');
                   setModify(false);
                   setText('');
-                  modifyComment(id, { comment: text });
-                  // console.log('b');
+                  modifyComment(id, { comment: text, user: user });
                   return;
                 }
-                // console.log('c');
                 setText(comment);
                 setModify(true);
-                // console.log('d');
               }}
             >
               {modify ? '저장' : '수정'}
@@ -62,8 +58,8 @@ function NewComment({
         {modify ? (
           <textarea
             type="text"
-            value={text}
-            className={commentStyles.commentInput}
+            value={text || ''}
+            className={styles.commentInput}
             placeholder="댓글을 입력하세요."
             onChange={event => {
               setText(event.target.value);
@@ -76,6 +72,7 @@ function NewComment({
       {commentModal === true ? (
         <CommentModal
           id={id}
+          user={user}
           commentModal={commentModal}
           setCommentModal={setCommentModal}
           deleteComment={deleteComment}

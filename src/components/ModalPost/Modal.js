@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './ModalDeleteComment.module.scss';
+import styles from './Modal.module.scss';
 
-function Modal({ visible, text, cancelText, onClose, confirmText, onConfirm }) {
+function Modal(props) {
+  const { visible, text, cancelText, onClose, confirmText, onConfirm } = props;
   if (!visible) return null;
   return (
     <div>
@@ -15,10 +16,10 @@ function Modal({ visible, text, cancelText, onClose, confirmText, onConfirm }) {
           background: 'rgba(0,0,0,0.6)',
         }}
       />
-      <div className={styles.commentModal}>
-        <div className={styles.modalWrap}>
+      <div className={styles.Modal}>
+        <div className={styles.modalWrapper}>
           <div className={styles.modalWrap}>
-            <div className={styles.modalDeleteComment}>
+            <div className={styles.modalDelete}>
               <p>{text}</p>
               <div className={styles.modalButton}>
                 <button className={styles.cancelButton} onClick={onClose}>
