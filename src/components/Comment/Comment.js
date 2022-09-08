@@ -11,9 +11,9 @@ function Comment() {
   const { postId } = useParams();
   const [userInfo, setUser] = useState();
   const [comment, setComment] = useState('');
-  // const [id, setId] = useState(1);
   const [commentArray, setCommentArray] = useState([]);
 
+  //사용자 정보 GET
   useEffect(() => {
     const token = localStorage.getItem(LOGIN_TOKEN);
 
@@ -30,7 +30,20 @@ function Comment() {
       });
   }, []);
 
-  // 댓글 POST 부분
+  //댓글 GET
+  const loader = () => {
+    fetch(`http://localhost:8000/comment/${postId}`)
+      .then(res => res.json())
+      .then(data => {
+        setCommentArray(data?.comments ?? []);
+      });
+  };
+
+  useEffect(() => {
+    loader();
+  }, []);
+
+  // 댓글 POST
   const addComment = () => {
     const token = localStorage.getItem(LOGIN_TOKEN);
 
@@ -58,7 +71,7 @@ function Comment() {
     setComment('');
   };
 
-  // 댓글 DEL부분
+  // 댓글 DELETE
   const deleteComment = (id, user) => {
     const token = localStorage.getItem(LOGIN_TOKEN);
 
@@ -68,7 +81,7 @@ function Comment() {
     }
 
     if (userInfo !== user) {
-      alert('not user');
+      alert('작성자 정보와 다릅니다.');
       return;
     }
 
@@ -85,7 +98,7 @@ function Comment() {
       });
   };
 
-  // 댓글 PATCH 부분
+  // 댓글 PATCH
   const modifyComment = (id, body) => {
     const token = localStorage.getItem(LOGIN_TOKEN);
 
@@ -95,7 +108,7 @@ function Comment() {
     }
 
     if (userInfo !== body.user) {
-      alert('not user');
+      alert('작성자 정보와 다릅니다.');
       return;
     }
 
@@ -114,19 +127,6 @@ function Comment() {
         loader();
       });
   };
-
-  //댓글 GET
-  const loader = () => {
-    fetch(`http://localhost:8000/comment/${postId}`)
-      .then(res => res.json())
-      .then(data => {
-        setCommentArray(data?.comments ?? []);
-      });
-  };
-
-  useEffect(() => {
-    loader();
-  }, []);
 
   return (
     <div className={styles.comment}>
