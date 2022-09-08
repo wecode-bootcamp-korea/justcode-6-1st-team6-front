@@ -15,6 +15,23 @@ function Post() {
   const [post, setPost] = useState(null);
   const [postModal, setPostModal] = useState(false);
 
+  // //사용자 정보 GET
+  // useEffect(() => {
+  //   const token = localStorage.getItem(LOGIN_TOKEN);
+
+  //   fetch('http://localhost:8000/users', {
+  //     method: 'GET',
+  //     headers: {
+  //       token: token,
+  //       'Content-type': 'application/json',
+  //     },
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setUser(res.user[0].nickname);
+  //     });
+  // }, []);
+
   //게시글 GET
   useEffect(() => {
     fetch(`http://localhost:8000/posts/${postId}`)
@@ -125,6 +142,11 @@ function Post() {
           }}
           onConfirm={() => {
             if (!postId) return;
+
+            // if (userInfo !== user) {
+            //   alert('작성자 정보와 다릅니다.');
+            //   return;
+            // }
 
             const token = localStorage.getItem(LOGIN_TOKEN);
 

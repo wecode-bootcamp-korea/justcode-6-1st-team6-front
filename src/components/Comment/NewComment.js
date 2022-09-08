@@ -28,7 +28,6 @@ function NewComment({
               <span className={styles.commentDate}>{created_at}</span>
             </div>
           </div>
-          //사용자 정보 비교 후 노출되게 하기
           <div className={styles.commentChangeBtn}>
             <button
               className={styles.commentModify}
