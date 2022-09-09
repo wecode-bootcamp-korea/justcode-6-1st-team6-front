@@ -27,7 +27,7 @@ function Post() {
   if (!post) return null;
 
   //게시글 DELETE
-  const deletePost = () => {
+  const deletePost = user => {
     if (!postId) return;
 
     const token = localStorage.getItem(LOGIN_TOKEN);
@@ -41,7 +41,13 @@ function Post() {
     })
       .then(res => res.status)
       .then(res => {
-        navigate('/');
+        if (res == 404) {
+          alert('작성자 정보와 다릅니다.');
+          setPostModal(false);
+          return;
+        } else {
+          navigate('/');
+        }
       });
   };
 
@@ -146,6 +152,7 @@ function Post() {
             deletePost();
           }}
         />
+
         <Comment />
       </div>
     </div>
