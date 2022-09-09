@@ -41,7 +41,7 @@ function Post() {
     })
       .then(res => res.status)
       .then(res => {
-        // navigate('/');
+        navigate('/');
       });
   };
 
