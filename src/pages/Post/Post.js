@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Post.module.scss';
 import Comment from '../../components/Comment/Comment';
-import Modal from '../../components/ModalPost/Modal';
+import Modal from '../../components/Modal/Modal';
 
 import profile from '../../assets/images/user_icon16.png';
 import arrow from '../../assets/svg/arrow.svg';
@@ -15,23 +15,6 @@ function Post() {
   const [post, setPost] = useState(null);
   const [postModal, setPostModal] = useState(false);
 
-  // //사용자 정보 GET
-  // useEffect(() => {
-  //   const token = localStorage.getItem(LOGIN_TOKEN);
-
-  //   fetch('http://localhost:8000/users', {
-  //     method: 'GET',
-  //     headers: {
-  //       token: token,
-  //       'Content-type': 'application/json',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       setUser(res.user[0].nickname);
-  //     });
-  // }, []);
-
   //게시글 GET
   useEffect(() => {
     fetch(`http://localhost:8000/posts/${postId}`)
@@ -42,6 +25,25 @@ function Post() {
   }, [postId]);
 
   if (!post) return null;
+
+  //게시글 DELETE
+  const deletePost = () => {
+    if (!postId) return;
+
+    const token = localStorage.getItem(LOGIN_TOKEN);
+
+    fetch(`http://localhost:8000/posts/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        token: token,
+        'Content-type': 'application/json',
+      },
+    })
+      .then(res => res.status)
+      .then(res => {
+        // navigate('/');
+      });
+  };
 
   return (
     <div className={styles.container}>
@@ -141,27 +143,7 @@ function Post() {
             setPostModal(false);
           }}
           onConfirm={() => {
-            if (!postId) return;
-
-            // if (userInfo !== user) {
-            //   alert('작성자 정보와 다릅니다.');
-            //   return;
-            // }
-
-            const token = localStorage.getItem(LOGIN_TOKEN);
-
-            //게시글 DELETE
-            fetch(`http://localhost:8000/posts/${postId}`, {
-              method: 'DELETE',
-              headers: {
-                token: token,
-                'Content-type': 'application/json',
-              },
-            })
-              .then(res => res.status)
-              .then(res => {
-                navigate('/');
-              });
+            deletePost();
           }}
         />
         <Comment />

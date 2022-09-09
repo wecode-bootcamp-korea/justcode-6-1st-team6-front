@@ -67,6 +67,32 @@
     resize: none;
   }
 
+  .modifyButton {
+    .confirmButton {
+      background-color: black;
+      color: white;
+    }
+
+    button {
+      width: 70px;
+      height: 1.75rem;
+      padding: 0 16px;
+      margin-top: 10px;
+      margin-right: 10px;
+
+      border: none;
+      outline: none;
+      border-radius: 4px;
+
+      font-size: 1rem;
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
   .commentContent {
     padding: 18px 0;
     font-size: 18px;
