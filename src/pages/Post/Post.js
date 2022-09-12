@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Post.module.scss';
 import Comment from '../../components/Comment/Comment';
-import Modal from '../../components/ModalPost/Modal';
+import Modal from '../../components/Modal/Modal';
 
 import profile from '../../assets/images/user_icon16.png';
 import arrow from '../../assets/svg/arrow.svg';
@@ -25,6 +25,31 @@ function Post() {
   }, [postId]);
 
   if (!post) return null;
+
+  //게시글 DELETE
+  const deletePost = user => {
+    if (!postId) return;
+
+    const token = localStorage.getItem(LOGIN_TOKEN);
+
+    fetch(`http://localhost:8000/posts/${postId}`, {
+      method: 'DELETE',
+      headers: {
+        token: token,
+        'Content-type': 'application/json',
+      },
+    })
+      .then(res => res.status)
+      .then(res => {
+        if (res == 404) {
+          alert('작성자 정보와 다릅니다.');
+          setPostModal(false);
+          return;
+        } else {
+          navigate('/');
+        }
+      });
+  };
 
   return (
     <div className={styles.container}>
@@ -124,24 +149,10 @@ function Post() {
             setPostModal(false);
           }}
           onConfirm={() => {
-            if (!postId) return;
-
-            const token = localStorage.getItem(LOGIN_TOKEN);
-
-            //게시글 DELETE
-            fetch(`http://localhost:8000/posts/${postId}`, {
-              method: 'DELETE',
-              headers: {
-                token: token,
-                'Content-type': 'application/json',
-              },
-            })
-              .then(res => res.status)
-              .then(res => {
-                navigate('/');
-              });
+            deletePost();
           }}
         />
+
         <Comment />
       </div>
     </div>

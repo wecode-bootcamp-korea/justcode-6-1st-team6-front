@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './NewComment.module.scss';
-import CommentModal from '../ModalComment/CommentModal';
+import Modal from '../Modal/Modal';
 
 function NewComment({
   id,
@@ -21,29 +21,22 @@ function NewComment({
         <div className={styles.commentHeader}>
           <div className={styles.commentInfoWrapper}>
             <span className={styles.commentProfile}>
-              <img src={profile} width={'100%'} />
+              <img src={profile} width="100%" alt={profile} />
             </span>
             <div className={styles.commentInfo}>
               <span className={styles.commentUser}>{user}</span>
               <span className={styles.commentDate}>{created_at}</span>
             </div>
           </div>
-          //사용자 정보 비교 후 노출되게 하기
           <div className={styles.commentChangeBtn}>
             <button
               className={styles.commentModify}
               onClick={() => {
-                if (modify) {
-                  setModify(false);
-                  setText('');
-                  modifyComment(id, { comment: text, user: user });
-                  return;
-                }
                 setText(comment);
                 setModify(true);
               }}
             >
-              {modify ? '저장' : '수정'}
+              수정
             </button>
             <button
               className={styles.commentDelete}
@@ -56,28 +49,55 @@ function NewComment({
           </div>
         </div>
         {modify ? (
-          <textarea
-            type="text"
-            value={text || ''}
-            className={styles.commentInput}
-            placeholder="댓글을 입력하세요."
-            onChange={event => {
-              setText(event.target.value);
-            }}
-          />
+          <>
+            <textarea
+              type="text"
+              value={text || ''}
+              className={styles.commentInput}
+              placeholder="댓글을 입력하세요."
+              onChange={event => {
+                setText(event.target.value);
+              }}
+            />
+            <div className={styles.modifyButton}>
+              <button
+                onClick={() => {
+                  setModify(false);
+                }}
+              >
+                취소
+              </button>
+              <button
+                className={styles.confirmButton}
+                onClick={() => {
+                  if (modify) {
+                    setModify(false);
+                    setText('');
+                    modifyComment(id, { comment: text, user: user });
+                    return;
+                  }
+                }}
+              >
+                완료
+              </button>
+            </div>
+          </>
         ) : (
           <div className={styles.commentContent}>{comment}</div>
         )}
       </div>
-      {commentModal === true ? (
-        <CommentModal
-          id={id}
-          user={user}
-          commentModal={commentModal}
-          setCommentModal={setCommentModal}
-          deleteComment={deleteComment}
-        />
-      ) : null}
+      <Modal
+        visible={commentModal}
+        text="댓글을 삭제하시겠어요?"
+        cancelText="아니요"
+        confirmText="네, 삭제할래요"
+        onClose={() => {
+          setCommentModal(false);
+        }}
+        onConfirm={() => {
+          deleteComment(id, user);
+        }}
+      />
     </>
   );
 }
